@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-31T04:46:55.649Z",
+  "updatedAt": "2026-07-31T10:36:15.891Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -22,9 +22,9 @@
     },
     "entrypoints/content/video.ts": {
       "noteFile": "files/7609ec6a0bbf-31bc8580.json",
-      "sourceHash": "sha256:cfd36923c34a98b26d79ca042f71a9da78eec11382b46f492ff9b4cac9e60517",
+      "sourceHash": "sha256:98549770eabfde015471d88e93f364efc7d4bf5b82b399bf0e1bade7b4de7266",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T02:53:07.680Z"
+      "updatedAt": "2026-07-31T09:55:16.873Z"
     },
     "entrypoints/content/site-adapters/index.ts": {
       "noteFile": "files/a723d6dc0de4-9f760837.json",
@@ -52,15 +52,68 @@
     },
     "entrypoints/content/keyboard-controller.ts": {
       "noteFile": "files/56af4d200781-6967d50a.json",
-      "sourceHash": "sha256:188b3aab8efe5096131a6f4f4cf401eeb311c09953e1a13491c47bdadf7f9674",
+      "sourceHash": "sha256:317521c6ae6c6dae53d09c58e02a9ba1b5d6c32a459fc68f2e123aeced7cbe1f",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T04:46:31.588Z"
+      "updatedAt": "2026-07-31T09:59:14.799Z"
     },
     "entrypoints/content/overlay-host.ts": {
       "noteFile": "files/415d68c1385a-d8d48f17.json",
       "sourceHash": "sha256:237b297f3a348faa8dc2ba94f045d0421b3ab1c4b0797bb8736abccef841160a",
       "programmingLanguage": "typescript",
       "updatedAt": "2026-07-31T04:46:55.649Z"
+    },
+    "entrypoints/content/video-target.ts": {
+      "noteFile": "files/59f192c60eba-d8e85afd.json",
+      "sourceHash": "sha256:abdf0cc139d2f994794908e00f14c83c7925a855216871bd91a666cf0e60d290",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T09:55:58.324Z"
+    },
+    "entrypoints/content/playback-rate.ts": {
+      "noteFile": "files/5a32261baf34-c29dfec6.json",
+      "sourceHash": "sha256:5394f9e3ec23ad0318a1f2942106b2d0094920802aace75f6b5e26528111b121",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T09:56:37.206Z"
+    },
+    "entrypoints/popup/App.tsx": {
+      "noteFile": "files/c923327ad66f-a7b8d95e.json",
+      "sourceHash": "sha256:e619b459dce43a9e05acc468f5a25295879510f1d699e20788dda6a0a3bc95f6",
+      "programmingLanguage": "typescriptreact",
+      "updatedAt": "2026-07-31T10:31:54.777Z"
+    },
+    "entrypoints/popup/Popup.tsx": {
+      "noteFile": "files/80f4df32b81a-e1548bf8.json",
+      "sourceHash": "sha256:3ad2aeec6f6fc12a673ccfa18fbafef2832ea4099756258b46043cee30d4e2c4",
+      "programmingLanguage": "typescriptreact",
+      "updatedAt": "2026-07-31T10:33:30.592Z"
+    },
+    "entrypoints/popup/ShortcutItem.tsx": {
+      "noteFile": "files/f2e2768511e5-2811594f.json",
+      "sourceHash": "sha256:6f75f2c483077f557b80ac6c0c1daacdb8581fa1a09744f99d113f5ac2335f2f",
+      "programmingLanguage": "typescriptreact",
+      "updatedAt": "2026-07-31T10:33:55.904Z"
+    },
+    "entrypoints/popup/ShortcutKey.tsx": {
+      "noteFile": "files/05b06617236a-2655f5e7.json",
+      "sourceHash": "sha256:3c7c8b56ebc5f0d363589593e211f9b1c4a43476491ecb08b6a9b3b5dfadd7d2",
+      "programmingLanguage": "typescriptreact",
+      "updatedAt": "2026-07-31T10:34:17.566Z"
+    },
+    "entrypoints/popup/shortcuts.ts": {
+      "noteFile": "files/769647b8fc49-75b0f577.json",
+      "sourceHash": "sha256:795a79745af9221c102b20c80c9e3ed8144fb926e41235ef862213e9c1b02bb6",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T10:36:15.891Z"
+    },
+    "entrypoints/popup/main.tsx": {
+      "noteFile": "files/d071893e9aac-d158e18f.json",
+      "sourceHash": "sha256:391dbe3d23b47345522595f2c637fd6899fae93f41001457d74e172e0d47596a",
+      "programmingLanguage": "typescriptreact",
+      "updatedAt": "2026-07-31T10:34:51.051Z"
+    },
+    "entrypoints/popup": {
+      "noteFile": "files/a5430473bb42-9a959394.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T10:35:35.080Z"
     }
   }
 }

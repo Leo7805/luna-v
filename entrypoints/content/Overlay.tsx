@@ -84,18 +84,18 @@ export function Overlay({ icon, label, seconds }: OverlayProps) {
   const phaseClass =
     phase === 'visible'
       ? 'translate-y-0 scale-100 opacity-100 duration-150'
-      : 'translate-y-1 scale-[.98] opacity-0 duration-400';
+      : 'translate-y-[.2em] scale-[.98] opacity-0 duration-400';
 
   return (
     <div
-      className="pointer-events-none fixed top-[45%] left-1/2 z-2147483647 flex w-[min(320px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 justify-center"
+      className="pointer-events-none fixed top-[45%] left-1/2 z-2147483647 flex w-[min(20em,calc(100vw-2em))] -translate-x-1/2 -translate-y-1/2 justify-center"
       aria-label={label}
       aria-live="polite"
     >
       <div
-        className={`flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-slate-950/85 px-5 py-3 text-center text-xl font-semibold leading-tight text-cyan-200 shadow-lg shadow-cyan-950/40 transition ease-out ${phaseClass}`}
+        className={`flex items-center gap-[.4em] rounded-[.6em] border border-cyan-300/30 bg-slate-950/85 px-[1em] py-[.6em] text-center text-[1.25em] font-semibold leading-tight text-cyan-200 shadow-lg shadow-cyan-950/40 transition ease-out ${phaseClass}`}
       >
-        <svg aria-hidden="true" viewBox="0 0 24 24" className="size-6 shrink-0">
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="size-[1.2em] shrink-0">
           <PlaybackIcon name={icon} />
         </svg>
         <span>{seconds ? `${seconds}s` : label}</span>

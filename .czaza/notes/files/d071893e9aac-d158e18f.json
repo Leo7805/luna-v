@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:391dbe3d23b47345522595f2c637fd6899fae93f41001457d74e172e0d47596a",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescriptreact"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T10:34:51.051Z",
+    "updatedAt": "2026-07-31T10:34:51.051Z"
+  },
+  "fileNote": {
+    "userNote": "Popup 挂载入口，没有自定义函数；现在挂载 <Popup />。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

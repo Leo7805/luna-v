@@ -1,2 +1,7 @@
 /** Provides Tailwind utilities for LunaV's Shadow DOM overlay. */
 @import 'tailwindcss';
+
+:host {
+  --luna-overlay-base-size: 16px;
+  font-size: var(--luna-overlay-base-size);
+}

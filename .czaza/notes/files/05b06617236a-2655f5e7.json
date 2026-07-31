@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:3c7c8b56ebc5f0d363589593e211f9b1c4a43476491ecb08b6a9b3b5dfadd7d2",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescriptreact"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T10:34:17.566Z",
+    "updatedAt": "2026-07-31T10:34:17.566Z"
+  },
+  "fileNote": {
+    "userNote": "单个绿色按键标签组件。\nShortcutKey()：统一控制 <kbd> 的颜色、边框、圆角与间距。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

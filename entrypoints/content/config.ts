@@ -8,6 +8,7 @@ export const VIDEO_CONTROL_CONFIG = {
     fadeDurationMs: 400,
   },
   seek: {
+    fineSeconds: 0.5,
     nearSeconds: 5,
     farSeconds: 30,
   },

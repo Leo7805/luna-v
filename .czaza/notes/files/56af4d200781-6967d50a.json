@@ -1,15 +1,15 @@
 {
   "source": {
-    "sourceHash": "sha256:188b3aab8efe5096131a6f4f4cf401eeb311c09953e1a13491c47bdadf7f9674",
+    "sourceHash": "sha256:317521c6ae6c6dae53d09c58e02a9ba1b5d6c32a459fc68f2e123aeced7cbe1f",
     "sourceHashKind": "text",
     "programmingLanguage": "typescript"
   },
   "defaults": {
     "createdAt": "2026-07-31T04:46:31.588Z",
-    "updatedAt": "2026-07-31T04:46:31.588Z"
+    "updatedAt": "2026-07-31T09:59:13.734Z"
   },
   "fileNote": {
-    "userNote": "startKeyboardController() 负责快捷键监听、事件拦截、跳转累计、速度操作队列和视频控制分发。",
+    "userNote": "页面事件总入口；现在分别从三个模块导入能力。\n\n1. startKeyboardController()        注册捕获阶段键盘事件。\n2. getAccumulatedSeconds()          在 1 秒窗口内累计重复 seek 的显示值。\n3. consumeShortcutEvent()           在 LunaV 已确认执行操作后阻止页面继续处理。\n4. queuePlaybackRateAdjustment()    串行处理快速连续的速度调整。\n5. handleShortcutKeyDown()          识别快捷键、选择目标、执行并显示反馈。\n6. blockHandledShortcutEvent()      阻断同一快捷键后续的 keypress / keyup 兼容事件。\n\n\n",
     "createdBy": "user"
   },
   "sectionNotes": {},

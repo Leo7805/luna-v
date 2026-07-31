@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:3ad2aeec6f6fc12a673ccfa18fbafef2832ea4099756258b46043cee30d4e2c4",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescriptreact"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T10:33:30.592Z",
+    "updatedAt": "2026-07-31T10:33:30.592Z"
+  },
+  "fileNote": {
+    "userNote": "整个 Popup 根 React 组件。\n\nPopup()：渲染标题与快捷键列表，并通过 map 生成每一行。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

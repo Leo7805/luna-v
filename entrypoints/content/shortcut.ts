@@ -3,6 +3,8 @@
 /** Represents one native video operation supported by the first release. */
 export type VideoAction =
   | 'toggle-playback'
+  | 'seek-backward-fine'
+  | 'seek-forward-fine'
   | 'seek-backward'
   | 'seek-forward'
   | 'seek-backward-far'
@@ -21,6 +23,8 @@ export interface Shortcut {
 
 const SHORTCUTS: Readonly<Record<string, Shortcut>> = {
   ' ': { action: 'toggle-playback' },
+  ',': { action: 'seek-backward-fine' },
+  '.': { action: 'seek-forward-fine' },
   ArrowLeft: { action: 'seek-backward' },
   ArrowRight: { action: 'seek-forward' },
   ArrowUp: { action: 'seek-backward-far' },

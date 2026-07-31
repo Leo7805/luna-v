@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:6f75f2c483077f557b80ac6c0c1daacdb8581fa1a09744f99d113f5ac2335f2f",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescriptreact"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T10:33:55.904Z",
+    "updatedAt": "2026-07-31T10:33:55.904Z"
+  },
+  "fileNote": {
+    "userNote": "单条快捷键说明组件。\n\nShortcutItem()：渲染“绿色按键组在前 + 说明在后”的一行。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

@@ -1,0 +1,21 @@
+{
+  "source": {
+    "sourceHash": "sha256:795a79745af9221c102b20c80c9e3ed8144fb926e41235ef862213e9c1b02bb6",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T10:34:32.677Z",
+    "updatedAt": "2026-07-31T10:36:12.554Z"
+  },
+  "fileNote": {
+    "userNote": "快捷键数据源，没有函数。\n\nPOPUP_SHORTCUTS：集中列出每组按键与说明；今后改 0.5 seconds、新增快捷键都改这里。",
+    "createdBy": "user",
+    "status": {
+      "content": "stale",
+      "anchor": "confirmed"
+    }
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}
