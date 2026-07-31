@@ -71,6 +71,16 @@ export function findTargetVideo(): HTMLVideoElement | null {
 }
 
 /**
+ * Creates feedback for the playback state that a native toggle is expected to produce.
+ *
+ * @param video - The native video whose current state determines the next state.
+ * @returns Feedback for the expected playback state after the toggle.
+ */
+export function getToggledPlaybackFeedback(video: HTMLVideoElement): VideoFeedback {
+  return video.paused ? { icon: 'play', label: 'Playing' } : { icon: 'pause', label: 'Paused' };
+}
+
+/**
  * Seeks one video by a signed duration while respecting finite media bounds.
  *
  * @param video - The video to seek.

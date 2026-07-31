@@ -1,11 +1,9 @@
 /** Resolves dedicated native video selectors for supported video-hosting sites. */
-import { findEcho360Video } from './echo360';
+import { echo360Adapter } from './echo360';
+import type { SiteAdapter } from './types';
 
-/** Selects a native video for one supported website. */
-type SiteVideoSelector = () => HTMLVideoElement | null;
-
-const SITE_VIDEO_SELECTORS: Readonly<Record<string, SiteVideoSelector>> = {
-  'echo360.net.au': findEcho360Video,
+const SITE_ADAPTERS: Readonly<Record<string, SiteAdapter>> = {
+  'echo360.net.au': echo360Adapter,
 };
 
 /**
@@ -20,15 +18,25 @@ function matchesDomain(hostname: string, domain: string): boolean {
 }
 
 /**
+ * Finds the registered adapter for the current website.
+ *
+ * @param hostname - The current page hostname.
+ * @returns The adapter, or null when no adapter applies.
+ */
+export function getSiteAdapter(hostname: string): SiteAdapter | null {
+  for (const [domain, adapter] of Object.entries(SITE_ADAPTERS)) {
+    if (matchesDomain(hostname, domain)) return adapter;
+  }
+
+  return null;
+}
+
+/**
  * Finds a dedicated video target for the current website when an adapter is registered.
  *
  * @param hostname - The current page hostname.
  * @returns The dedicated target, or null when no adapter applies or finds a video.
  */
 export function findSiteVideoTarget(hostname: string): HTMLVideoElement | null {
-  for (const [domain, selectVideo] of Object.entries(SITE_VIDEO_SELECTORS)) {
-    if (matchesDomain(hostname, domain)) return selectVideo();
-  }
-
-  return null;
+  return getSiteAdapter(hostname)?.selectVideo() ?? null;
 }

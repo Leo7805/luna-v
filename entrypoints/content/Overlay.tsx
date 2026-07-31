@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import type { OverlayIcon } from './video';
 
-const DISPLAY_DURATION_MS = 2_000;
+const DISPLAY_DURATION_MS = 600;
 const FADE_DURATION_MS = 400;
 
 /** Represents one stage of the overlay's appearance animation. */
