@@ -6,12 +6,11 @@ LunaV is a Chrome extension for controlling HTML video playback with the keyboar
 
 | Key | Action |
 | --- | --- |
-| `[` | Decrease playback speed |
-| `]` | Increase playback speed |
 | `Space` | Play or pause |
-| `,` / `.` | Seek backward or forward 0.5 seconds |
-| `←` / `→` | Seek backward or forward 5 seconds |
+| `[` / `]` | Decrease or increase speed by 0.25× (0.25×–3×) |
 | `↑` / `↓` | Seek backward or forward 30 seconds |
+| `←` / `→` | Seek backward or forward 5 seconds |
+| `,` / `.` | Seek backward or forward 0.5 seconds |
 
 ## Supported Sites
 

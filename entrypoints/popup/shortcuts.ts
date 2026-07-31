@@ -11,7 +11,7 @@ export interface PopupShortcut {
 /** Lists every keyboard shortcut currently supported by LunaV. */
 export const POPUP_SHORTCUTS: readonly PopupShortcut[] = [
   { keys: ['Space'], description: 'Play or pause' },
-  { keys: ['[', ']'], description: 'Playback speed' },
+  { keys: ['[', ']'], description: 'Speed ±0.25× (0.25×–3×)' },
   { keys: ['↑', '↓'], description: 'Seek 30 seconds' },
   { keys: ['←', '→'], description: 'Seek 5 seconds' },
   { keys: [',', '.'], description: 'Fine seek 0.5 seconds' },
