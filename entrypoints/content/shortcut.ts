@@ -6,7 +6,12 @@ export type VideoAction =
   | 'seek-backward'
   | 'seek-forward'
   | 'seek-backward-far'
-  | 'seek-forward-far';
+  | 'seek-forward-far'
+  | 'decrease-playback-rate'
+  | 'increase-playback-rate';
+
+/** Represents one supported playback-speed action. */
+export type PlaybackRateAction = 'decrease-playback-rate' | 'increase-playback-rate';
 
 /** Describes the operation associated with one shortcut. */
 export interface Shortcut {
@@ -22,6 +27,11 @@ const SHORTCUTS: Readonly<Record<string, Shortcut>> = {
   ArrowDown: { action: 'seek-forward-far' },
 };
 
+const CODE_SHORTCUTS: Readonly<Record<string, Shortcut>> = {
+  BracketLeft: { action: 'decrease-playback-rate' },
+  BracketRight: { action: 'increase-playback-rate' },
+};
+
 /**
  * Gets the native video action for one supported keyboard event.
  *
@@ -30,7 +40,17 @@ const SHORTCUTS: Readonly<Record<string, Shortcut>> = {
  */
 export function getShortcut(event: KeyboardEvent): Shortcut | null {
   if (event.altKey || event.ctrlKey || event.metaKey) return null;
-  return SHORTCUTS[event.key] ?? null;
+  return SHORTCUTS[event.key] ?? CODE_SHORTCUTS[event.code] ?? null;
+}
+
+/**
+ * Determines whether an action changes playback speed instead of playback position or state.
+ *
+ * @param action - The supported video action to inspect.
+ * @returns True when the action changes playback speed.
+ */
+export function isPlaybackRateAction(action: VideoAction): action is PlaybackRateAction {
+  return action === 'decrease-playback-rate' || action === 'increase-playback-rate';
 }
 
 /**

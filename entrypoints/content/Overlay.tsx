@@ -33,6 +33,16 @@ function PlaybackIcon({ name }: { name: OverlayIcon }) {
     return <path d="M8 5h3v14H8zm5 0h3v14h-3z" fill="currentColor" stroke="none" />;
   }
 
+  if (name === 'speed') {
+    return (
+      <path
+        d="M4 16a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4Zm7-5h2v5h-2zm2.4-3.6 1.4-1.4 1.2 1.2-1.4 1.4zM10 6H8V4h2v2Z"
+        fill="currentColor"
+        stroke="none"
+      />
+    );
+  }
+
   const isRewind = name === 'rewind';
   return (
     <path

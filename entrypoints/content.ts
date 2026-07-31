@@ -5,10 +5,17 @@ import { Overlay } from './content/Overlay';
 import { VIDEO_CONTROL_CONFIG } from './content/config';
 import overlayStyles from './content/overlay.css?inline';
 import { getSiteAdapter } from './content/site-adapters';
-import { getShortcut, isEditableTarget, type VideoAction } from './content/shortcut';
+import {
+  getShortcut,
+  isEditableTarget,
+  isPlaybackRateAction,
+  type VideoAction,
+} from './content/shortcut';
 import {
   findTargetVideo,
+  getPlaybackRateFeedback,
   getToggledPlaybackFeedback,
+  performPlaybackRateAction,
   performVideoAction,
   type VideoFeedback,
 } from './content/video';
@@ -32,6 +39,7 @@ export default defineContentScript({
     let root: ReturnType<typeof createRoot> | null = null;
     let overlayKey = 0;
     let latestSeek: SeekAccumulation | null = null;
+    let playbackRateAdjustmentQueue: Promise<void> = Promise.resolve();
     const handledShortcutCodes = new Set<string>();
 
     /**
@@ -101,6 +109,23 @@ export default defineContentScript({
     }
 
     /**
+     * Serializes playback-speed adjustments so rapid bracket presses use the latest site state.
+     *
+     * @param video - The selected native video.
+     * @param action - The requested playback-speed action.
+     * @returns Nothing.
+     */
+    function queuePlaybackRateAdjustment(
+      video: HTMLVideoElement,
+      action: Extract<VideoAction, 'decrease-playback-rate' | 'increase-playback-rate'>,
+    ): void {
+      playbackRateAdjustmentQueue = playbackRateAdjustmentQueue
+        .then(() => performPlaybackRateAction(video, action))
+        .then(() => undefined)
+        .catch(() => undefined);
+    }
+
+    /**
      * Controls a selected native video for supported shortcuts outside editable controls.
      *
      * @param event - The captured page keyboard event.
@@ -119,6 +144,17 @@ export default defineContentScript({
 
       if (shortcut.action === 'toggle-playback' && siteAdapter?.nativeSpaceFeedback) {
         showOverlay(getToggledPlaybackFeedback(video));
+        return;
+      }
+
+      if (isPlaybackRateAction(shortcut.action)) {
+        const feedback = getPlaybackRateFeedback(video, shortcut.action);
+        if (!feedback) return;
+
+        handledShortcutCodes.add(event.code);
+        consumeShortcutEvent(event);
+        showOverlay(feedback);
+        queuePlaybackRateAdjustment(video, shortcut.action);
         return;
       }
 
