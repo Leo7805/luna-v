@@ -1,24 +1,38 @@
 /** Maps supported keyboard shortcuts and detects editable page targets. */
 
-const SHORTCUT_MESSAGES: Readonly<Record<string, string>> = {
-  '[': 'Slower',
-  ']': 'Faster',
-  ' ': 'Play / Pause',
-  ArrowLeft: 'Back 5 seconds',
-  ArrowRight: 'Forward 5 seconds',
-  ArrowUp: 'Back 15 seconds',
-  ArrowDown: 'Forward 15 seconds',
+/** Represents one native video operation supported by the first release. */
+export type VideoAction =
+  | 'toggle-playback'
+  | 'seek-backward'
+  | 'seek-forward'
+  | 'seek-backward-far'
+  | 'seek-forward-far';
+
+/** Describes the operation and user feedback associated with one shortcut. */
+export interface Shortcut {
+  /** The native video operation to perform. */
+  action: VideoAction;
+  /** The user-facing feedback displayed after the operation. */
+  message: string;
+}
+
+const SHORTCUTS: Readonly<Record<string, Shortcut>> = {
+  ' ': { action: 'toggle-playback', message: 'Play / Pause' },
+  ArrowLeft: { action: 'seek-backward', message: 'Back 5 seconds' },
+  ArrowRight: { action: 'seek-forward', message: 'Forward 5 seconds' },
+  ArrowUp: { action: 'seek-backward-far', message: 'Back 15 seconds' },
+  ArrowDown: { action: 'seek-forward-far', message: 'Forward 15 seconds' },
 };
 
 /**
- * Gets the overlay message for one supported keyboard event.
+ * Gets the native video action for one supported keyboard event.
  *
  * @param event - The page keyboard event.
- * @returns The message to display, or null when the key is unsupported.
+ * @returns The shortcut definition, or null when the key is unsupported.
  */
-export function getShortcutMessage(event: KeyboardEvent): string | null {
+export function getShortcut(event: KeyboardEvent): Shortcut | null {
   if (event.altKey || event.ctrlKey || event.metaKey) return null;
-  return SHORTCUT_MESSAGES[event.key] ?? null;
+  return SHORTCUTS[event.key] ?? null;
 }
 
 /**

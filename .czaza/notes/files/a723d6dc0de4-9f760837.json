@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:648f2f04cf57e202228dbfabee48ec34c4027e2cfbf5164bed6d0f5d5d9abe4a",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T02:53:32.768Z",
+    "updatedAt": "2026-07-31T02:53:32.768Z"
+  },
+  "fileNote": {
+    "userNote": "注册站点选择器。\n以 hostname 匹配，支持 echo360.net.au 及其子域名。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

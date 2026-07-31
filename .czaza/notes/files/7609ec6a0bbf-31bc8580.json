@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:cfd36923c34a98b26d79ca042f71a9da78eec11382b46f492ff9b4cac9e60517",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T02:53:07.680Z",
+    "updatedAt": "2026-07-31T02:53:07.680Z"
+  },
+  "fileNote": {
+    "userNote": "findTargetVideo() 先调用站点适配器。\n专用目标不存在或不可见时，自动回退通用选择逻辑。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

@@ -3,7 +3,8 @@ import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Overlay } from './content/Overlay';
 import overlayStyles from './content/overlay.css?inline';
-import { getShortcutMessage, isEditableTarget } from './content/shortcut';
+import { getShortcut, isEditableTarget } from './content/shortcut';
+import { findTargetVideo, performVideoAction } from './content/video';
 
 export default defineContentScript({
   matches: ['<all_urls>'],
@@ -34,7 +35,7 @@ export default defineContentScript({
     }
 
     /**
-     * Displays feedback for supported shortcuts outside editable page controls.
+     * Controls a selected native video for supported shortcuts outside editable controls.
      *
      * @param event - The captured page keyboard event.
      * @returns Nothing.
@@ -42,9 +43,14 @@ export default defineContentScript({
     function handleKeyDown(event: KeyboardEvent): void {
       if (isEditableTarget(event.target)) return;
 
-      const message = getShortcutMessage(event);
-      if (!message) return;
+      const shortcut = getShortcut(event);
+      if (!shortcut) return;
 
+      const video = findTargetVideo();
+      if (!video) return;
+
+      const message = performVideoAction(video, shortcut.action);
+      event.preventDefault();
       showOverlay(message);
     }
 

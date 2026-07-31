@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-31T02:32:19.957Z",
+  "updatedAt": "2026-07-31T02:53:42.563Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -19,6 +19,24 @@
       "sourceHash": "sha256:2149bdfbec6198c671ee883a9483ac95cdf57d299374f442813f3c8f8b12ff94",
       "programmingLanguage": "typescript",
       "updatedAt": "2026-07-31T02:32:19.957Z"
+    },
+    "entrypoints/content/video.ts": {
+      "noteFile": "files/7609ec6a0bbf-31bc8580.json",
+      "sourceHash": "sha256:cfd36923c34a98b26d79ca042f71a9da78eec11382b46f492ff9b4cac9e60517",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T02:53:07.680Z"
+    },
+    "entrypoints/content/site-adapters/index.ts": {
+      "noteFile": "files/a723d6dc0de4-9f760837.json",
+      "sourceHash": "sha256:648f2f04cf57e202228dbfabee48ec34c4027e2cfbf5164bed6d0f5d5d9abe4a",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T02:53:32.768Z"
+    },
+    "entrypoints/content/site-adapters/echo360.ts": {
+      "noteFile": "files/660cdca6d469-32f3b042.json",
+      "sourceHash": "sha256:2e4e8cf493397d524443346397af23acb63fd05b3186ed6a06943bfa5cc2961c",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T02:53:42.563Z"
     }
   }
 }
