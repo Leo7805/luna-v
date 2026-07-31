@@ -3,6 +3,7 @@ import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Overlay } from './content/Overlay';
 import overlayStyles from './content/overlay.css?inline';
+import { getShortcutMessage, isEditableTarget } from './content/shortcut';
 
 export default defineContentScript({
   matches: ['<all_urls>'],
@@ -18,6 +19,35 @@ export default defineContentScript({
     shadowRoot.append(styleElement, mountPoint);
     document.documentElement.append(host);
 
-    createRoot(mountPoint).render(createElement(Overlay, { message: 'LunaV is ready' }));
+    const root = createRoot(mountPoint);
+    let overlayKey = 0;
+
+    /**
+     * Shows a fresh overlay instance and restarts its fade-out timer.
+     *
+     * @param message - The shortcut feedback to present.
+     * @returns Nothing.
+     */
+    function showOverlay(message: string): void {
+      overlayKey += 1;
+      root.render(createElement(Overlay, { key: overlayKey, message }));
+    }
+
+    /**
+     * Displays feedback for supported shortcuts outside editable page controls.
+     *
+     * @param event - The captured page keyboard event.
+     * @returns Nothing.
+     */
+    function handleKeyDown(event: KeyboardEvent): void {
+      if (isEditableTarget(event.target)) return;
+
+      const message = getShortcutMessage(event);
+      if (!message) return;
+
+      showOverlay(message);
+    }
+
+    window.addEventListener('keydown', handleKeyDown, { capture: true });
   },
 });
