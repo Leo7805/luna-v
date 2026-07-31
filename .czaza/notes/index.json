@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-31T10:36:15.891Z",
+  "updatedAt": "2026-07-31T12:02:05.066Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -16,75 +16,21 @@
     },
     "entrypoints/content.ts": {
       "noteFile": "files/8ce8b0bd9bcf-da468464.json",
-      "sourceHash": "sha256:e3eeb8b893553483b5ff3ec68d4cbbb5e98e7aefbc7dee35f1aa4c4b5f9d4586",
+      "sourceHash": "sha256:431e123c879328d69a086a6883e5e23b2ad94920f00be4f4e76bb4ed3830f453",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T04:45:51.672Z"
-    },
-    "entrypoints/content/video.ts": {
-      "noteFile": "files/7609ec6a0bbf-31bc8580.json",
-      "sourceHash": "sha256:98549770eabfde015471d88e93f364efc7d4bf5b82b399bf0e1bade7b4de7266",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T09:55:16.873Z"
-    },
-    "entrypoints/content/site-adapters/index.ts": {
-      "noteFile": "files/a723d6dc0de4-9f760837.json",
-      "sourceHash": "sha256:648f2f04cf57e202228dbfabee48ec34c4027e2cfbf5164bed6d0f5d5d9abe4a",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T02:53:32.768Z"
-    },
-    "entrypoints/content/site-adapters/echo360.ts": {
-      "noteFile": "files/660cdca6d469-32f3b042.json",
-      "sourceHash": "sha256:2e4e8cf493397d524443346397af23acb63fd05b3186ed6a06943bfa5cc2961c",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T02:53:42.563Z"
-    },
-    "entrypoints/content/shortcut.ts": {
-      "noteFile": "files/ee5ff334b293-67427b53.json",
-      "sourceHash": "sha256:cf270df26102a0344586163b225b071633513de95c015e571c6f81c16789a719",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T03:05:03.387Z"
+      "updatedAt": "2026-07-31T11:30:31.365Z"
     },
     "entrypoints/content/config.ts": {
       "noteFile": "files/7f2617438117-c707be30.json",
-      "sourceHash": "sha256:8bc10180307b6f6c6c9edc63392eaffe1d1049592af66e6feacaa280354e101a",
+      "sourceHash": "sha256:d6d8242d3696adc9713c94ec877f4b167350e98750668cb8e9a71fa0d3274acf",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T03:54:07.851Z"
-    },
-    "entrypoints/content/keyboard-controller.ts": {
-      "noteFile": "files/56af4d200781-6967d50a.json",
-      "sourceHash": "sha256:317521c6ae6c6dae53d09c58e02a9ba1b5d6c32a459fc68f2e123aeced7cbe1f",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T09:59:14.799Z"
-    },
-    "entrypoints/content/overlay-host.ts": {
-      "noteFile": "files/415d68c1385a-d8d48f17.json",
-      "sourceHash": "sha256:237b297f3a348faa8dc2ba94f045d0421b3ab1c4b0797bb8736abccef841160a",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T04:46:55.649Z"
-    },
-    "entrypoints/content/video-target.ts": {
-      "noteFile": "files/59f192c60eba-d8e85afd.json",
-      "sourceHash": "sha256:abdf0cc139d2f994794908e00f14c83c7925a855216871bd91a666cf0e60d290",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T09:55:58.324Z"
-    },
-    "entrypoints/content/playback-rate.ts": {
-      "noteFile": "files/5a32261baf34-c29dfec6.json",
-      "sourceHash": "sha256:5394f9e3ec23ad0318a1f2942106b2d0094920802aace75f6b5e26528111b121",
-      "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T09:56:37.206Z"
-    },
-    "entrypoints/popup/App.tsx": {
-      "noteFile": "files/c923327ad66f-a7b8d95e.json",
-      "sourceHash": "sha256:e619b459dce43a9e05acc468f5a25295879510f1d699e20788dda6a0a3bc95f6",
-      "programmingLanguage": "typescriptreact",
-      "updatedAt": "2026-07-31T10:31:54.777Z"
+      "updatedAt": "2026-07-31T11:11:10.450Z"
     },
     "entrypoints/popup/Popup.tsx": {
       "noteFile": "files/80f4df32b81a-e1548bf8.json",
-      "sourceHash": "sha256:3ad2aeec6f6fc12a673ccfa18fbafef2832ea4099756258b46043cee30d4e2c4",
+      "sourceHash": "sha256:d225117bcd413e0348a7344b9643508705f79fb16f6365a99663a4d95a152029",
       "programmingLanguage": "typescriptreact",
-      "updatedAt": "2026-07-31T10:33:30.592Z"
+      "updatedAt": "2026-07-31T11:32:53.234Z"
     },
     "entrypoints/popup/ShortcutItem.tsx": {
       "noteFile": "files/f2e2768511e5-2811594f.json",
@@ -114,6 +60,206 @@
       "noteFile": "files/a5430473bb42-9a959394.json",
       "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "updatedAt": "2026-07-31T10:35:35.080Z"
+    },
+    "entrypoints": {
+      "noteFile": "files/3dc7d1a3c1e2-cbe989d5.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:08:51.235Z"
+    },
+    "entrypoints/content": {
+      "noteFile": "files/ab3c3d200a03-68e23271.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:09:14.834Z"
+    },
+    "entrypoints/content/controller": {
+      "noteFile": "files/22164209618d-9009a770.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:26:14.936Z"
+    },
+    "entrypoints/content/keyboard": {
+      "noteFile": "files/3995afba6e75-b9429c57.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:27:00.343Z"
+    },
+    "entrypoints/content/video": {
+      "noteFile": "files/b2905a66b3d0-165ccebf.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:27:25.663Z"
+    },
+    "entrypoints/content/video/site-adapters": {
+      "noteFile": "files/20ed4af89645-bef5c3cf.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:27:47.780Z"
+    },
+    "entrypoints/content/overlay": {
+      "noteFile": "files/8fa274f1c48a-c78eb03c.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:28:13.510Z"
+    },
+    "entrypoints/content/controller/keyboard-controller.ts": {
+      "noteFile": "files/2fb5dafdcdd6-e9e73da4.json",
+      "sourceHash": "sha256:40b59b6fde2bf1adc3babaea42ca9ae86ed792b298541120d473d90b201f351e",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:28:38.576Z"
+    },
+    "entrypoints/content/keyboard/shortcut.ts": {
+      "noteFile": "files/ebd59b57d34e-6742129a.json",
+      "sourceHash": "sha256:edde1fa42ba3b74c28ba70c1130b6aeff9c659ffd6ed9bcb5407dd3e1a074df8",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:28:49.829Z"
+    },
+    "entrypoints/content/video/actions.ts": {
+      "noteFile": "files/2c9be4e78973-71f87b6c.json",
+      "sourceHash": "sha256:178c9376c6bb38a45d70d748d024f6f3a7ecc40547a6bd15d3942058da287562",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:28:59.924Z"
+    },
+    "entrypoints/content/video/target.ts": {
+      "noteFile": "files/1dbbaedcaa2b-d3a4fc6b.json",
+      "sourceHash": "sha256:abdf0cc139d2f994794908e00f14c83c7925a855216871bd91a666cf0e60d290",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:29:09.066Z"
+    },
+    "entrypoints/content/video/playback-rate.ts": {
+      "noteFile": "files/9b6db2df2d9f-69cb423a.json",
+      "sourceHash": "sha256:06826a3f74408ad0fc4af2d13d6117bc4c9909817f9a547316bf4554d59bf350",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:29:18.937Z"
+    },
+    "entrypoints/content/video/site-adapters/echo360.ts": {
+      "noteFile": "files/05cd23d5670d-aa442e6f.json",
+      "sourceHash": "sha256:4e455c7e9dc44ce6d56f71819c9dda70bc957fa4e1538777ecca4d657a28e947",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:29:30.800Z"
+    },
+    "entrypoints/content/video/site-adapters/index.ts": {
+      "noteFile": "files/a723d6dc0de4-9f760837.json",
+      "sourceHash": "sha256:099428458f96db72bda1aeb8608802b96abfee14e41e1dd12ca36ffac17fb6f0",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:30:23.496Z"
+    },
+    "entrypoints/content/overlay/Overlay.tsx": {
+      "noteFile": "files/d299e6e7f6e1-8d5455fc.json",
+      "sourceHash": "sha256:4977935c97b1d32a68074286242ae863121b74c8fb366e51e4f6a720b306eb79",
+      "programmingLanguage": "typescriptreact",
+      "updatedAt": "2026-07-31T11:32:48.288Z"
+    },
+    "entrypoints/content/overlay/overlay.css": {
+      "noteFile": "files/bafcf9d96ffa-124b1b84.json",
+      "sourceHash": "sha256:f6644250ce7d3ac75f40a4010b74905db46e9433e39353a4473e4d03ca28e7fc",
+      "programmingLanguage": "css",
+      "updatedAt": "2026-07-31T11:31:28.844Z"
+    },
+    "entrypoints/content/video/site-adapters/types.ts": {
+      "noteFile": "files/8c96b354512f-a023e6d3.json",
+      "sourceHash": "sha256:5cf749d0126e667aa44e55026a744306e70ba67f5f40010e282c911dd5875782",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:31:38.324Z"
+    },
+    "entrypoints/content/overlay/overlay-host.ts": {
+      "noteFile": "files/415d68c1385a-d8d48f17.json",
+      "sourceHash": "sha256:ae5417a28c0943959e3f2c2cd988281bcdfdc0a47b8f2a086f2f1e87fc459ddb",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:34:26.047Z"
+    },
+    "entrypoints/popup/index.html": {
+      "noteFile": "files/2c7eeba9066d-344f1bb5.json",
+      "sourceHash": "sha256:e8e6ae2e1b58e329109019242f06abb3b9693656b347a4a9ce431863dd77c2ba",
+      "programmingLanguage": "html",
+      "updatedAt": "2026-07-31T11:40:50.730Z"
+    },
+    "entrypoints/popup/style.css": {
+      "noteFile": "files/bd15d0be90c6-13a683d9.json",
+      "sourceHash": "sha256:7f6835d4716f2af35dd78db4ca24ce4682807012976e87aacb4ec5465032dad9",
+      "programmingLanguage": "css",
+      "updatedAt": "2026-07-31T11:41:02.289Z"
+    },
+    "entrypoints/background.ts": {
+      "noteFile": "files/8d11bb5e767a-982e8ed7.json",
+      "sourceHash": "sha256:2d65ff80bbd60aafd581532364bb67317afd34b0b61f91d07328612c47339a46",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T11:41:35.113Z"
+    },
+    "public": {
+      "noteFile": "files/efa1f375d761-b03bd09e.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:42:22.184Z"
+    },
+    "public/icon": {
+      "noteFile": "files/818d03a3edda-469e5a88.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:42:34.819Z"
+    },
+    "scripts": {
+      "noteFile": "files/8c5967fd8486-bf2d4e4e.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:43:38.612Z"
+    },
+    "scripts/stamp.mjs": {
+      "noteFile": "files/944e0a83d305-6f476370.json",
+      "sourceHash": "sha256:b929bc1f2950a0854fc89dedabe924f5a9d8689dadb9aff28f761dbacf6f6cf6",
+      "programmingLanguage": "javascript",
+      "updatedAt": "2026-07-31T11:43:49.630Z"
+    },
+    "scripts/sync-local-build.mjs": {
+      "noteFile": "files/b4a89f94d355-27a70880.json",
+      "sourceHash": "sha256:4bc0e21233ceacb6f3f942d067edb2db59c355d59b14da3107c1e6ecb9ede860",
+      "programmingLanguage": "javascript",
+      "updatedAt": "2026-07-31T11:44:08.229Z"
+    },
+    "package.json": {
+      "noteFile": "files/7ae45ad102ea-acb7da77.json",
+      "sourceHash": "sha256:0c7ce7972696ba3f0f70ed51f978282387be0478b636f244f4ffaf0eae45d8b1",
+      "programmingLanguage": "json",
+      "updatedAt": "2026-07-31T11:44:26.025Z"
+    },
+    "tsconfig.json": {
+      "noteFile": "files/b55cdbef4907-01d20c97.json",
+      "sourceHash": "sha256:d0386e696869c0d4763d7073a9484a520c8cc51cac942cde4ff5472e2341718c",
+      "programmingLanguage": "jsonc",
+      "updatedAt": "2026-07-31T11:46:00.079Z"
+    },
+    "pnpm-lock.yaml": {
+      "noteFile": "files/32824c984905-8212cdd6.json",
+      "sourceHash": "sha256:fee09871cc7f58ee9719e3b234428f490fbc51fd664de8ae992fb14f09600cfa",
+      "programmingLanguage": "yaml",
+      "updatedAt": "2026-07-31T11:48:36.016Z"
+    },
+    ".czaza": {
+      "noteFile": "files/2764461d3f01-06b9fd20.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:53:28.814Z"
+    },
+    ".output": {
+      "noteFile": "files/6ef40595ec0a-0bea3325.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:53:54.599Z"
+    },
+    ".pnpm-store": {
+      "noteFile": "files/af63db20003a-d943623d.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:54:07.627Z"
+    },
+    ".wxt": {
+      "noteFile": "files/05778210b7cd-fb192927.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:54:17.601Z"
+    },
+    "build": {
+      "noteFile": "files/44575cf5b285-a23348d7.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:54:41.558Z"
+    },
+    "assets": {
+      "noteFile": "files/8bf729ffe074-c7e768d5.json",
+      "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "updatedAt": "2026-07-31T11:54:56.372Z"
+    },
+    "assets/react.svg": {
+      "noteFile": "files/2bed2e5da2cb-0a422baf.json",
+      "sourceHash": "sha256:9d72e876c70d7c7d4cbfe6c315747b66308176577329d2dc59b75191bdc21a4e",
+      "programmingLanguage": "xml",
+      "updatedAt": "2026-07-31T11:55:14.980Z"
     }
   }
 }

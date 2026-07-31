@@ -1,8 +1,8 @@
 /** Adjusts native and site-specific video playback speeds. */
-import { VIDEO_CONTROL_CONFIG } from './config';
+import { VIDEO_CONTROL_CONFIG } from '../config';
 import { getSiteAdapter } from './site-adapters';
-import type { PlaybackRateAction } from './shortcut';
-import type { VideoFeedback } from './video';
+import type { PlaybackRateAction } from '../keyboard/shortcut';
+import type { VideoFeedback } from './actions';
 
 /**
  * Formats a playback rate without unnecessary trailing zeroes.

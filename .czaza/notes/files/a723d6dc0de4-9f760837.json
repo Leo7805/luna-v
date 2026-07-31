@@ -1,15 +1,15 @@
 {
   "source": {
-    "sourceHash": "sha256:648f2f04cf57e202228dbfabee48ec34c4027e2cfbf5164bed6d0f5d5d9abe4a",
+    "sourceHash": "sha256:099428458f96db72bda1aeb8608802b96abfee14e41e1dd12ca36ffac17fb6f0",
     "sourceHashKind": "text",
     "programmingLanguage": "typescript"
   },
   "defaults": {
     "createdAt": "2026-07-31T02:53:32.768Z",
-    "updatedAt": "2026-07-31T02:53:32.768Z"
+    "updatedAt": "2026-07-31T11:30:18.833Z"
   },
   "fileNote": {
-    "userNote": "注册站点选择器。\n以 hostname 匹配，支持 echo360.net.au 及其子域名。",
+    "userNote": "注册站点选择器。统一注册并按当前网址查找对应的网站适配器。\n\n以 hostname 匹配，支持 echo360.net.au 及其子域名。",
     "createdBy": "user"
   },
   "sectionNotes": {},

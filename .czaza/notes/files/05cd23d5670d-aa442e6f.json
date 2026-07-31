@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:4e455c7e9dc44ce6d56f71819c9dda70bc957fa4e1538777ecca4d657a28e947",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:29:30.800Z",
+    "updatedAt": "2026-07-31T11:29:30.800Z"
+  },
+  "fileNote": {
+    "userNote": "Echo 360 专用规则。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

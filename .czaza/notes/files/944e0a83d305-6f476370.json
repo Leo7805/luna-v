@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:b929bc1f2950a0854fc89dedabe924f5a9d8689dadb9aff28f761dbacf6f6cf6",
+    "sourceHashKind": "text",
+    "programmingLanguage": "javascript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:43:49.630Z",
+    "updatedAt": "2026-07-31T11:43:49.630Z"
+  },
+  "fileNote": {
+    "userNote": "在构建产物的 manifest.json 写入开发版本号，例如 0.1.1-d25。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

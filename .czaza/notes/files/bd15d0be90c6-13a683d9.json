@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:7f6835d4716f2af35dd78db4ca24ce4682807012976e87aacb4ec5465032dad9",
+    "sourceHashKind": "text",
+    "programmingLanguage": "css"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:41:02.289Z",
+    "updatedAt": "2026-07-31T11:41:02.289Z"
+  },
+  "fileNote": {
+    "userNote": "Popup 的全局样式入口；导入 Tailwind CSS，并设置字体和 Popup 的最小宽度。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

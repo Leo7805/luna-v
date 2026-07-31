@@ -1,5 +1,5 @@
 /** Starts LunaV's in-page keyboard video controls. */
-import { startKeyboardController } from './content/keyboard-controller';
+import { startKeyboardController } from './content/controller/keyboard-controller';
 
 export default defineContentScript({
   matches: ['<all_urls>'],

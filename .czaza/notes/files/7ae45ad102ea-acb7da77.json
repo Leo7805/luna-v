@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:0c7ce7972696ba3f0f70ed51f978282387be0478b636f244f4ffaf0eae45d8b1",
+    "sourceHashKind": "text",
+    "programmingLanguage": "json"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:44:26.025Z",
+    "updatedAt": "2026-07-31T11:45:15.842Z"
+  },
+  "fileNote": {
+    "userNote": "项目的名称、版本、依赖和常用命令配置，例如 pnpm build、pnpm sbuild。\n\npackage.json 是 JavaScript / Node.js 项目的通用项目配置文件，不是 TypeScript 专用。\n\n它主要记录：\n项目名称和版本\n依赖包，例如 React、WXT、Tailwind\n命令，例如 pnpm build\n包管理相关设置",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

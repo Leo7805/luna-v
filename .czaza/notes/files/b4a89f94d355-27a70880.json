@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:4bc0e21233ceacb6f3f942d067edb2db59c355d59b14da3107c1e6ecb9ede860",
+    "sourceHashKind": "text",
+    "programmingLanguage": "javascript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:44:08.229Z",
+    "updatedAt": "2026-07-31T11:44:08.229Z"
+  },
+  "fileNote": {
+    "userNote": "把 WXT 生成的 .output/chrome-mv3 复制到 build/Keyboard-Video-Controls---LunaV，方便 Chrome 直接加载。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

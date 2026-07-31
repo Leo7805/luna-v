@@ -1,0 +1,15 @@
+{
+  "source": {
+    "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:43:38.612Z",
+    "updatedAt": "2026-07-31T11:43:38.612Z"
+  },
+  "fileNote": {
+    "userNote": "存放构建完成后自动执行的辅助脚本。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

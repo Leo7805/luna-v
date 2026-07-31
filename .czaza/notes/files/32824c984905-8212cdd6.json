@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:fee09871cc7f58ee9719e3b234428f490fbc51fd664de8ae992fb14f09600cfa",
+    "sourceHashKind": "text",
+    "programmingLanguage": "yaml"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:48:36.016Z",
+    "updatedAt": "2026-07-31T11:48:36.016Z"
+  },
+  "fileNote": {
+    "userNote": "锁定依赖的精确版本，确保不同电脑安装出来的依赖一致。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

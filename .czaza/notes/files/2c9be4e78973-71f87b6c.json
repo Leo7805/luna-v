@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:178c9376c6bb38a45d70d748d024f6f3a7ecc40547a6bd15d3942058da287562",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:28:59.924Z",
+    "updatedAt": "2026-07-31T11:28:59.924Z"
+  },
+  "fileNote": {
+    "userNote": "播放、暂停和各档进度跳转。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

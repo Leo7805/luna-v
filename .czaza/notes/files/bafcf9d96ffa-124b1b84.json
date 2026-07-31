@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:f6644250ce7d3ac75f40a4010b74905db46e9433e39353a4473e4d03ca28e7fc",
+    "sourceHashKind": "text",
+    "programmingLanguage": "css"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:12:10.194Z",
+    "updatedAt": "2026-07-31T11:31:28.844Z"
+  },
+  "fileNote": {
+    "userNote": "提供浮层的 Tailwind 样式与独立的本地字号基准。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

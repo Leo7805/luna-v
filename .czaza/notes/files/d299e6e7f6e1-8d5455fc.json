@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:4977935c97b1d32a68074286242ae863121b74c8fb366e51e4f6a720b306eb79",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescriptreact"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:12:23.537Z",
+    "updatedAt": "2026-07-31T11:37:46.952Z"
+  },
+  "fileNote": {
+    "userNote": "渲染带图标、动画和淡出的浮层 React 组件 (浮层 React 视图)",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

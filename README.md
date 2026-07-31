@@ -29,3 +29,7 @@ LunaV is a Chrome extension for controlling HTML video playback with the keyboar
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Privacy
+
+LunaV's data-handling practices are described in the [Privacy Policy](PRIVACY.md).

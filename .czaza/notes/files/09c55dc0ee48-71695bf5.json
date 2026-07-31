@@ -6,10 +6,10 @@
   },
   "defaults": {
     "createdAt": "2026-07-31T01:41:35.075Z",
-    "updatedAt": "2026-07-31T01:41:35.075Z"
+    "updatedAt": "2026-07-31T11:47:36.319Z"
   },
   "fileNote": {
-    "userNote": "WXT 主配置文件",
+    "userNote": "WXT 主配置文件\n\nWXT 的扩展构建配置，例如 Manifest V3、Vite 和 Chrome 扩展打包行为。\n\n因为这个项目使用的是 WXT，WXT 本身就是基于 Vite 构建的，所以不需要单独的 vite.config.ts。\n\n以后如果需要配置 Vite，比如别名、额外插件、构建选项，也继续写在 wxt.config.ts 的 vite 里面即可。",
     "createdBy": "user"
   },
   "sectionNotes": {},

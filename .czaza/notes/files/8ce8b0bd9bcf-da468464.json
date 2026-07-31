@@ -1,15 +1,15 @@
 {
   "source": {
-    "sourceHash": "sha256:e3eeb8b893553483b5ff3ec68d4cbbb5e98e7aefbc7dee35f1aa4c4b5f9d4586",
+    "sourceHash": "sha256:431e123c879328d69a086a6883e5e23b2ad94920f00be4f4e76bb4ed3830f453",
     "sourceHashKind": "text",
     "programmingLanguage": "typescript"
   },
   "defaults": {
     "createdAt": "2026-07-31T02:08:55.605Z",
-    "updatedAt": "2026-07-31T04:45:50.352Z"
+    "updatedAt": "2026-07-31T11:41:55.183Z"
   },
   "fileNote": {
-    "userNote": "content-script 配置并启动控制器。",
+    "userNote": "注入每个网页的内容脚本入口；当前负责启动 LunaV 的键盘控制功能。\n\ncontent-script 配置并启动控制器。\n\n",
     "createdBy": "user"
   },
   "sectionNotes": {},

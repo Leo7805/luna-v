@@ -1,0 +1,15 @@
+{
+  "source": {
+    "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:27:25.663Z",
+    "updatedAt": "2026-07-31T11:27:25.663Z"
+  },
+  "fileNote": {
+    "userNote": "负责选择视频、播放暂停、跳转进度和调整播放速度。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

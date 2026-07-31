@@ -1,19 +1,16 @@
 /** Coordinates page keyboard events with LunaV's video controls and feedback. */
-import { VIDEO_CONTROL_CONFIG } from './config';
-import { createOverlayPresenter } from './overlay-host';
-import { getPlaybackRateFeedback, performPlaybackRateAction } from './playback-rate';
-import { getSiteAdapter } from './site-adapters';
+import { VIDEO_CONTROL_CONFIG } from '../config';
+import { createOverlayPresenter } from '../overlay/overlay-host';
+import { getPlaybackRateFeedback, performPlaybackRateAction } from '../video/playback-rate';
+import { getSiteAdapter } from '../video/site-adapters';
+import { findTargetVideo } from '../video/target';
 import {
   getShortcut,
   isEditableTarget,
   isPlaybackRateAction,
   type VideoAction,
-} from './shortcut';
-import {
-  getToggledPlaybackFeedback,
-  performVideoAction,
-} from './video';
-import { findTargetVideo } from './video-target';
+} from '../keyboard/shortcut';
+import { getToggledPlaybackFeedback, performVideoAction } from '../video/actions';
 
 /** Stores the most recent seek action for short-window feedback accumulation. */
 interface SeekAccumulation {

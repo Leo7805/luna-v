@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:5cf749d0126e667aa44e55026a744306e70ba67f5f40010e282c911dd5875782",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:10:33.984Z",
+    "updatedAt": "2026-07-31T11:31:38.324Z"
+  },
+  "fileNote": {
+    "userNote": "定义网站适配器需要遵守的 TypeScript 类型与接口。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

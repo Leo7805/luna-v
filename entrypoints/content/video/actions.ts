@@ -1,6 +1,6 @@
 /** Performs native playback and timeline operations for the selected video. */
-import { VIDEO_CONTROL_CONFIG } from './config';
-import type { PlaybackRateAction, VideoAction } from './shortcut';
+import { VIDEO_CONTROL_CONFIG } from '../config';
+import type { PlaybackRateAction, VideoAction } from '../keyboard/shortcut';
 
 /** Identifies the visual symbol used for one overlay feedback item. */
 export type OverlayIcon = 'rewind' | 'fast-forward' | 'play' | 'pause' | 'speed';

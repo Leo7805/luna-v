@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:d0386e696869c0d4763d7073a9484a520c8cc51cac942cde4ff5472e2341718c",
+    "sourceHashKind": "text",
+    "programmingLanguage": "jsonc"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:46:00.079Z",
+    "updatedAt": "2026-07-31T11:46:00.079Z"
+  },
+  "fileNote": {
+    "userNote": "TypeScript 编译规则，例如类型检查和模块解析方式。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

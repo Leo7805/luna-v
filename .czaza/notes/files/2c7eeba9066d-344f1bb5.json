@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:e8e6ae2e1b58e329109019242f06abb3b9693656b347a4a9ce431863dd77c2ba",
+    "sourceHashKind": "text",
+    "programmingLanguage": "html"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:40:50.730Z",
+    "updatedAt": "2026-07-31T11:40:50.730Z"
+  },
+  "fileNote": {
+    "userNote": "Popup 的 HTML 页面外壳，提供 <div id=\"root\"> 给 React 挂载，并设置页面标题。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

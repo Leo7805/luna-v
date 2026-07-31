@@ -3,7 +3,7 @@ import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Overlay } from './Overlay';
 import overlayStyles from './overlay.css?inline';
-import type { VideoFeedback } from './video';
+import type { VideoFeedback } from '../video/actions';
 
 /** Presents transient video-control feedback above the current page. */
 export interface OverlayPresenter {

@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:2d65ff80bbd60aafd581532364bb67317afd34b0b61f91d07328612c47339a46",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:41:35.113Z",
+    "updatedAt": "2026-07-31T11:41:35.113Z"
+  },
+  "fileNote": {
+    "userNote": "扩展的后台服务脚本，适合放浏览器级工作，例如保存设置、跨标签页通信或统一处理消息；当前还是 WXT 默认示例，没有参与 LunaV 的视频控制。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

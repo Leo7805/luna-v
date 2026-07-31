@@ -1,7 +1,7 @@
 /** Displays a short-lived, isolated status message above the current page. */
 import { useEffect, useState } from 'react';
-import { VIDEO_CONTROL_CONFIG } from './config';
-import type { OverlayIcon } from './video';
+import { VIDEO_CONTROL_CONFIG } from '../config';
+import type { OverlayIcon } from '../video/actions';
 
 /** Represents one stage of the overlay's visibility animation. */
 type OverlayPhase = 'visible' | 'leaving';

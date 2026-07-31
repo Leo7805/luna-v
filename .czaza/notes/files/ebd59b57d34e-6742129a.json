@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:edde1fa42ba3b74c28ba70c1130b6aeff9c659ffd6ed9bcb5407dd3e1a074df8",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:28:49.829Z",
+    "updatedAt": "2026-07-31T11:28:49.829Z"
+  },
+  "fileNote": {
+    "userNote": "快捷键映射与输入保护。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

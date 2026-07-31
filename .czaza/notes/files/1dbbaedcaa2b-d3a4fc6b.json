@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:abdf0cc139d2f994794908e00f14c83c7925a855216871bd91a666cf0e60d290",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:29:09.066Z",
+    "updatedAt": "2026-07-31T11:29:09.066Z"
+  },
+  "fileNote": {
+    "userNote": "选择当前要控制的视频。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

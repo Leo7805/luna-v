@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:9d72e876c70d7c7d4cbfe6c315747b66308176577329d2dc59b75191bdc21a4e",
+    "sourceHashKind": "text",
+    "programmingLanguage": "xml"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:55:14.980Z",
+    "updatedAt": "2026-07-31T11:55:14.980Z"
+  },
+  "fileNote": {
+    "userNote": "React/Vite 默认示例图标；当前 LunaV 不需要它，可以后续确认后删除。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

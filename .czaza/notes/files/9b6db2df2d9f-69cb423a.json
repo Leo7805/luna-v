@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:06826a3f74408ad0fc4af2d13d6117bc4c9909817f9a547316bf4554d59bf350",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T11:29:18.937Z",
+    "updatedAt": "2026-07-31T11:29:18.937Z"
+  },
+  "fileNote": {
+    "userNote": "播放速度调整。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}
