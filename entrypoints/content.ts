@@ -18,6 +18,6 @@ export default defineContentScript({
     shadowRoot.append(styleElement, mountPoint);
     document.documentElement.append(host);
 
-    createRoot(mountPoint).render(createElement(Overlay, { message: 'LunaV 已就绪' }));
+    createRoot(mountPoint).render(createElement(Overlay, { message: 'LunaV is ready' }));
   },
 });
