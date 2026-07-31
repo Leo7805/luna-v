@@ -66,6 +66,7 @@ Wait for confirmation before creating or editing code. The user's explicit reque
 - Avoid unrelated refactors, dependency changes, formatting changes, and renamed files.
 - Reuse existing code and native browser APIs before adding a dependency or abstraction.
 - Explain and obtain approval before adding, removing, or upgrading dependencies.
+- Prefer standard Tailwind utilities such as `duration-400` over bracketed arbitrary values. Use bracket syntax only when no standard utility can express the required value.
 - Keep source files under 300 lines where practical; split by responsibility, not merely line count.
 - Do not hard-code secrets or expose sensitive values in logs.
 
@@ -90,6 +91,8 @@ Wait for confirmation before creating or editing code. The user's explicit reque
 
 After every implementation:
 
+- Begin with a concise overview of the complete change: what it adds or changes, its role in the overall architecture, and the user-visible result. Do not begin with an individual file or directory.
+- List every modified file, new file, and new directory. Link each existing file and directory where possible.
 - Organize the summary by changed file and link each existing file.
 - State the responsibility of each changed file and each added or materially changed function.
 - List automated validation commands actually run and their results.

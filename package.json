@@ -1,6 +1,6 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "Keyboard Video Controls - LunaV",
+  "description": "Control video playback on Chrome webpages with simple keyboard shortcuts.",
   "private": true,
   "version": "0.0.0",
   "packageManager": "pnpm@10.33.0",
@@ -13,7 +13,10 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare"
+    "postinstall": "wxt prepare",
+    "stamp": "node scripts/stamp.mjs --manifest .output/chrome-mv3/manifest.json --state build/.dev-stamp.json",
+    "sync": "node scripts/sync-local-build.mjs",
+    "sbuild": "pnpm build && pnpm stamp && pnpm sync"
   },
   "dependencies": {
     "react": "^19.2.4",

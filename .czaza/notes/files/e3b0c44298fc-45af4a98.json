@@ -1,0 +1,15 @@
+{
+  "source": {
+    "sourceHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T01:41:55.433Z",
+    "updatedAt": "2026-07-31T02:02:06.936Z"
+  },
+  "fileNote": {
+    "userNote": "Chrome网页视频控制插件\n\nCommands:\npnpm sbuild  # 开发构建，生成 version_name\npnpm build   # 普通构建，不带开发编号\npnpm zip     # 正式 zip，不带开发编号\n\n\n---\n\n按键逻辑：\n按键\t操作\n[\t减速 0.25x\n]\t加速 0.25x\nSpace\t暂停 / 播放\n←\t后退 5 秒\n→\t前进 5 秒\n↑\t后退 15 秒\n↓\t前进 15 秒",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:8c2a0f0f76d2290d832b86172ce1e41c4ed6dbac789abe92e28c27f36f9d075f",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T01:41:35.075Z",
+    "updatedAt": "2026-07-31T01:41:35.075Z"
+  },
+  "fileNote": {
+    "userNote": "WXT 主配置文件",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

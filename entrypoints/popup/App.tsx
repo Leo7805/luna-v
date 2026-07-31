@@ -1,6 +1,6 @@
 function App() {
   return (
-    <main className="w-[360px] bg-slate-950 p-5 text-slate-100">
+    <main className="w-90 bg-slate-950 p-5 text-slate-100">
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-xl">
         <p className="text-xs font-semibold tracking-[0.18em] text-violet-300 uppercase">
           Luna
