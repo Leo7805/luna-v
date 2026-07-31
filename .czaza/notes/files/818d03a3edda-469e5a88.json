@@ -4,10 +4,10 @@
   },
   "defaults": {
     "createdAt": "2026-07-31T11:42:34.819Z",
-    "updatedAt": "2026-07-31T11:42:34.819Z"
+    "updatedAt": "2026-07-31T13:02:43.508Z"
   },
   "fileNote": {
-    "userNote": "存放 Chrome 扩展在工具栏、扩展管理页等位置使用的不同尺寸图标。",
+    "userNote": "存放 Chrome 扩展在工具栏、扩展管理页等位置使用的不同尺寸图标。\n\n只需要4组: 128*128, 48*48, 32*32, 16*16\n\nWXT 默认还有个 96 的，chrome extension 并不需要。",
     "createdBy": "user"
   },
   "sectionNotes": {},
