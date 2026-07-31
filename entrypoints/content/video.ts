@@ -16,6 +16,27 @@ export interface VideoFeedback {
   seconds?: number;
 }
 
+/** Identifies a reached edge of a video's seekable timeline. */
+type SeekBoundary = 'start' | 'end';
+
+/** Describes the actual result of one timeline seek. */
+interface SeekResult {
+  /** The rounded distance displayed for the completed seek. */
+  seconds: number;
+  /** The reached edge when no further movement was possible. */
+  boundary: SeekBoundary | null;
+}
+
+/** Describes the valid timeline range reported by a native video. */
+interface SeekBounds {
+  /** The earliest seekable time. */
+  start: number;
+  /** The latest seekable time, when the video has a finite end. */
+  end: number | null;
+}
+
+const SEEK_EPSILON_SECONDS = 0.01;
+
 /**
  * Determines whether a video is visible enough to be an interaction target.
  *
@@ -79,15 +100,85 @@ export function getToggledPlaybackFeedback(video: HTMLVideoElement): VideoFeedba
 }
 
 /**
- * Seeks one video by a signed duration while respecting finite media bounds.
+ * Gets a video's current native seekable bounds.
+ *
+ * @param video - The video to seek.
+ * @returns The available seek bounds.
+ */
+function getSeekBounds(video: HTMLVideoElement): SeekBounds {
+  const { seekable } = video;
+  if (seekable.length) {
+    return {
+      start: seekable.start(0),
+      end: seekable.end(seekable.length - 1),
+    };
+  }
+
+  return {
+    start: 0,
+    end: Number.isFinite(video.duration) ? video.duration : null,
+  };
+}
+
+/**
+ * Seeks one video by a signed duration while respecting its actual seekable bounds.
  *
  * @param video - The video to seek.
  * @param seconds - The signed seek distance in seconds.
- * @returns Nothing.
+ * @returns The actual seek result.
  */
-function seekVideo(video: HTMLVideoElement, seconds: number): void {
-  const nextTime = Math.max(0, video.currentTime + seconds);
-  video.currentTime = Number.isFinite(video.duration) ? Math.min(nextTime, video.duration) : nextTime;
+function seekVideo(video: HTMLVideoElement, seconds: number): SeekResult {
+  const { start, end } = getSeekBounds(video);
+  const requestedTime = video.currentTime + seconds;
+  const nextTime = Math.max(start, end === null ? requestedTime : Math.min(requestedTime, end));
+  const movedSeconds = Math.abs(nextTime - video.currentTime);
+
+  if (movedSeconds <= SEEK_EPSILON_SECONDS) {
+    return {
+      seconds: 0,
+      boundary: seconds < 0 ? 'start' : end === null ? null : 'end',
+    };
+  }
+
+  video.currentTime = nextTime;
+  if (Math.abs(nextTime - start) <= SEEK_EPSILON_SECONDS) {
+    return { seconds: 0, boundary: 'start' };
+  }
+  if (end !== null && Math.abs(nextTime - end) <= SEEK_EPSILON_SECONDS) {
+    return { seconds: 0, boundary: 'end' };
+  }
+
+  const displayedSeconds = Math.round(movedSeconds);
+  if (displayedSeconds === 0) {
+    return {
+      seconds: 0,
+      boundary: seconds < 0 ? 'start' : end === null ? null : 'end',
+    };
+  }
+
+  return { seconds: displayedSeconds, boundary: null };
+}
+
+/**
+ * Performs one timeline seek and creates feedback for its actual result.
+ *
+ * @param video - The video to seek.
+ * @param seconds - The signed seek distance in seconds.
+ * @param icon - The visual direction icon for the seek.
+ * @param label - The fallback description for a successful seek.
+ * @returns Feedback for the actual seek result.
+ */
+function performSeek(
+  video: HTMLVideoElement,
+  seconds: number,
+  icon: Extract<OverlayIcon, 'rewind' | 'fast-forward'>,
+  label: string,
+): VideoFeedback {
+  const result = seekVideo(video, seconds);
+  if (result.boundary === 'start') return { icon, label: 'Start' };
+  if (result.boundary === 'end') return { icon, label: 'End' };
+
+  return { icon, label, seconds: result.seconds };
 }
 
 /**
@@ -190,33 +281,33 @@ export function performVideoAction(video: HTMLVideoElement, action: VideoAction)
       video.pause();
       return { icon: 'pause', label: 'Paused' };
     case 'seek-backward':
-      seekVideo(video, -VIDEO_CONTROL_CONFIG.seek.nearSeconds);
-      return {
-        icon: 'rewind',
-        label: `Back ${VIDEO_CONTROL_CONFIG.seek.nearSeconds} seconds`,
-        seconds: VIDEO_CONTROL_CONFIG.seek.nearSeconds,
-      };
+      return performSeek(
+        video,
+        -VIDEO_CONTROL_CONFIG.seek.nearSeconds,
+        'rewind',
+        `Back ${VIDEO_CONTROL_CONFIG.seek.nearSeconds} seconds`,
+      );
     case 'seek-forward':
-      seekVideo(video, VIDEO_CONTROL_CONFIG.seek.nearSeconds);
-      return {
-        icon: 'fast-forward',
-        label: `Forward ${VIDEO_CONTROL_CONFIG.seek.nearSeconds} seconds`,
-        seconds: VIDEO_CONTROL_CONFIG.seek.nearSeconds,
-      };
+      return performSeek(
+        video,
+        VIDEO_CONTROL_CONFIG.seek.nearSeconds,
+        'fast-forward',
+        `Forward ${VIDEO_CONTROL_CONFIG.seek.nearSeconds} seconds`,
+      );
     case 'seek-backward-far':
-      seekVideo(video, -VIDEO_CONTROL_CONFIG.seek.farSeconds);
-      return {
-        icon: 'rewind',
-        label: `Back ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
-        seconds: VIDEO_CONTROL_CONFIG.seek.farSeconds,
-      };
+      return performSeek(
+        video,
+        -VIDEO_CONTROL_CONFIG.seek.farSeconds,
+        'rewind',
+        `Back ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
+      );
     case 'seek-forward-far':
-      seekVideo(video, VIDEO_CONTROL_CONFIG.seek.farSeconds);
-      return {
-        icon: 'fast-forward',
-        label: `Forward ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
-        seconds: VIDEO_CONTROL_CONFIG.seek.farSeconds,
-      };
+      return performSeek(
+        video,
+        VIDEO_CONTROL_CONFIG.seek.farSeconds,
+        'fast-forward',
+        `Forward ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
+      );
     case 'decrease-playback-rate':
       return adjustPlaybackRate(video, -1);
     case 'increase-playback-rate':
