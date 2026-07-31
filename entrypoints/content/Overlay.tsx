@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { VIDEO_CONTROL_CONFIG } from './config';
 import type { OverlayIcon } from './video';
 
-/** Represents one stage of the overlay's appearance animation. */
-type OverlayPhase = 'entering' | 'visible' | 'leaving';
+/** Represents one stage of the overlay's visibility animation. */
+type OverlayPhase = 'visible' | 'leaving';
 
 /**
  * Props for the temporary in-page status overlay.
@@ -60,11 +60,10 @@ function PlaybackIcon({ name }: { name: OverlayIcon }) {
  * @returns The overlay element while its animation is active.
  */
 export function Overlay({ icon, label, seconds }: OverlayProps) {
-  const [phase, setPhase] = useState<OverlayPhase>('entering');
+  const [phase, setPhase] = useState<OverlayPhase>('visible');
   const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    const animationFrame = window.requestAnimationFrame(() => setPhase('visible'));
     const fadeTimer = window.setTimeout(
       () => setPhase('leaving'),
       VIDEO_CONTROL_CONFIG.feedback.displayDurationMs,
@@ -75,7 +74,6 @@ export function Overlay({ icon, label, seconds }: OverlayProps) {
     );
 
     return () => {
-      window.cancelAnimationFrame(animationFrame);
       window.clearTimeout(fadeTimer);
       window.clearTimeout(removeTimer);
     };
@@ -84,11 +82,9 @@ export function Overlay({ icon, label, seconds }: OverlayProps) {
   if (!isMounted) return null;
 
   const phaseClass =
-    phase === 'entering'
-      ? 'translate-y-1 scale-105 opacity-0 duration-150'
-      : phase === 'visible'
-        ? 'translate-y-0 scale-100 opacity-100 duration-150'
-        : 'translate-y-1 scale-[.98] opacity-0 duration-400';
+    phase === 'visible'
+      ? 'translate-y-0 scale-100 opacity-100 duration-150'
+      : 'translate-y-1 scale-[.98] opacity-0 duration-400';
 
   return (
     <div
