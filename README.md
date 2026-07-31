@@ -1,3 +1,30 @@
-# WXT + React
+# LunaV
 
-This template should help get you started developing with React in WXT.
+LunaV is a Chrome extension for controlling HTML video playback with the keyboard.
+
+## Shortcuts
+
+| Key | Action |
+| --- | --- |
+| `[` | Decrease playback speed |
+| `]` | Increase playback speed |
+| `Space` | Play or pause |
+| `←` / `→` | Seek backward or forward 5 seconds |
+| `↑` / `↓` | Seek backward or forward 30 seconds |
+
+## Supported Sites
+
+- Native HTML `<video>` elements on ordinary web pages.
+- Echo360, including its native Space behavior and discrete playback-speed menu.
+
+## Technology
+
+- WXT with Manifest V3
+- React and TypeScript
+- Vite
+- Tailwind CSS v4
+- pnpm
+
+## License
+
+MIT. See [LICENSE](LICENSE).
