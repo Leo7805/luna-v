@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:188b3aab8efe5096131a6f4f4cf401eeb311c09953e1a13491c47bdadf7f9674",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T04:46:31.588Z",
+    "updatedAt": "2026-07-31T04:46:31.588Z"
+  },
+  "fileNote": {
+    "userNote": "startKeyboardController() 负责快捷键监听、事件拦截、跳转累计、速度操作队列和视频控制分发。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

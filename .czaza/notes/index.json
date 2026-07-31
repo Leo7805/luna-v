@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-31T03:54:07.851Z",
+  "updatedAt": "2026-07-31T04:46:55.649Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -16,9 +16,9 @@
     },
     "entrypoints/content.ts": {
       "noteFile": "files/8ce8b0bd9bcf-da468464.json",
-      "sourceHash": "sha256:2149bdfbec6198c671ee883a9483ac95cdf57d299374f442813f3c8f8b12ff94",
+      "sourceHash": "sha256:e3eeb8b893553483b5ff3ec68d4cbbb5e98e7aefbc7dee35f1aa4c4b5f9d4586",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T02:32:19.957Z"
+      "updatedAt": "2026-07-31T04:45:51.672Z"
     },
     "entrypoints/content/video.ts": {
       "noteFile": "files/7609ec6a0bbf-31bc8580.json",
@@ -49,6 +49,18 @@
       "sourceHash": "sha256:8bc10180307b6f6c6c9edc63392eaffe1d1049592af66e6feacaa280354e101a",
       "programmingLanguage": "typescript",
       "updatedAt": "2026-07-31T03:54:07.851Z"
+    },
+    "entrypoints/content/keyboard-controller.ts": {
+      "noteFile": "files/56af4d200781-6967d50a.json",
+      "sourceHash": "sha256:188b3aab8efe5096131a6f4f4cf401eeb311c09953e1a13491c47bdadf7f9674",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T04:46:31.588Z"
+    },
+    "entrypoints/content/overlay-host.ts": {
+      "noteFile": "files/415d68c1385a-d8d48f17.json",
+      "sourceHash": "sha256:237b297f3a348faa8dc2ba94f045d0421b3ab1c4b0797bb8736abccef841160a",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T04:46:55.649Z"
     }
   }
 }

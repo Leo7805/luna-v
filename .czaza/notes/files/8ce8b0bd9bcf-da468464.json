@@ -1,15 +1,15 @@
 {
   "source": {
-    "sourceHash": "sha256:2149bdfbec6198c671ee883a9483ac95cdf57d299374f442813f3c8f8b12ff94",
+    "sourceHash": "sha256:e3eeb8b893553483b5ff3ec68d4cbbb5e98e7aefbc7dee35f1aa4c4b5f9d4586",
     "sourceHashKind": "text",
     "programmingLanguage": "typescript"
   },
   "defaults": {
     "createdAt": "2026-07-31T02:08:55.605Z",
-    "updatedAt": "2026-07-31T02:32:18.976Z"
+    "updatedAt": "2026-07-31T04:45:50.352Z"
   },
   "fileNote": {
-    "userNote": "\n扩展到普通网页。\n创建 Shadow DOM 并挂载 React。\n页面加载时临时展示一次 LunaV 已就绪。\n\n注册 capture 阶段的键盘监听。\n创建 showOverlay()，每次按键都挂载一个新浮层实例，从而重置显示与淡出计时。\n跳过可编辑区域，不拦截网页默认事件。",
+    "userNote": "content-script 配置并启动控制器。",
     "createdBy": "user"
   },
   "sectionNotes": {},

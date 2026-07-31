@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:237b297f3a348faa8dc2ba94f045d0421b3ab1c4b0797bb8736abccef841160a",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T04:46:55.649Z",
+    "updatedAt": "2026-07-31T04:46:55.649Z"
+  },
+  "fileNote": {
+    "userNote": "createOverlayPresenter() 负责 Shadow DOM、React root 和浮层显示。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}
