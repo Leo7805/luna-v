@@ -8,20 +8,18 @@ export type VideoAction =
   | 'seek-backward-far'
   | 'seek-forward-far';
 
-/** Describes the operation and user feedback associated with one shortcut. */
+/** Describes the operation associated with one shortcut. */
 export interface Shortcut {
   /** The native video operation to perform. */
   action: VideoAction;
-  /** The user-facing feedback displayed after the operation. */
-  message: string;
 }
 
 const SHORTCUTS: Readonly<Record<string, Shortcut>> = {
-  ' ': { action: 'toggle-playback', message: 'Play / Pause' },
-  ArrowLeft: { action: 'seek-backward', message: 'Back 5 seconds' },
-  ArrowRight: { action: 'seek-forward', message: 'Forward 5 seconds' },
-  ArrowUp: { action: 'seek-backward-far', message: 'Back 15 seconds' },
-  ArrowDown: { action: 'seek-forward-far', message: 'Forward 15 seconds' },
+  ' ': { action: 'toggle-playback' },
+  ArrowLeft: { action: 'seek-backward' },
+  ArrowRight: { action: 'seek-forward' },
+  ArrowUp: { action: 'seek-backward-far' },
+  ArrowDown: { action: 'seek-forward-far' },
 };
 
 /**

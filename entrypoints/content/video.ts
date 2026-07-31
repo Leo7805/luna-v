@@ -3,7 +3,20 @@ import type { VideoAction } from './shortcut';
 import { findSiteVideoTarget } from './site-adapters';
 
 const NEAR_SEEK_SECONDS = 5;
-const FAR_SEEK_SECONDS = 15;
+const FAR_SEEK_SECONDS = 30;
+
+/** Identifies the visual symbol used for one overlay feedback item. */
+export type OverlayIcon = 'rewind' | 'fast-forward' | 'play' | 'pause';
+
+/** Describes the visual feedback produced by a completed video operation. */
+export interface VideoFeedback {
+  /** The symbol that communicates the operation direction. */
+  icon: OverlayIcon;
+  /** The accessible description of the completed operation. */
+  label: string;
+  /** The seek distance in seconds when the operation changes the timeline. */
+  seconds?: number;
+}
 
 /**
  * Determines whether a video is visible enough to be an interaction target.
@@ -74,29 +87,29 @@ function seekVideo(video: HTMLVideoElement, seconds: number): void {
  *
  * @param video - The selected native video.
  * @param action - The requested native video operation.
- * @returns The feedback message after initiating the operation.
+ * @returns The visual feedback after initiating the operation.
  */
-export function performVideoAction(video: HTMLVideoElement, action: VideoAction): string {
+export function performVideoAction(video: HTMLVideoElement, action: VideoAction): VideoFeedback {
   switch (action) {
     case 'toggle-playback':
       if (video.paused) {
         void video.play().catch(() => undefined);
-        return 'Playing';
+        return { icon: 'play', label: 'Playing' };
       }
 
       video.pause();
-      return 'Paused';
+      return { icon: 'pause', label: 'Paused' };
     case 'seek-backward':
       seekVideo(video, -NEAR_SEEK_SECONDS);
-      return 'Back 5 seconds';
+      return { icon: 'rewind', label: 'Back 5 seconds', seconds: NEAR_SEEK_SECONDS };
     case 'seek-forward':
       seekVideo(video, NEAR_SEEK_SECONDS);
-      return 'Forward 5 seconds';
+      return { icon: 'fast-forward', label: 'Forward 5 seconds', seconds: NEAR_SEEK_SECONDS };
     case 'seek-backward-far':
       seekVideo(video, -FAR_SEEK_SECONDS);
-      return 'Back 15 seconds';
+      return { icon: 'rewind', label: 'Back 30 seconds', seconds: FAR_SEEK_SECONDS };
     case 'seek-forward-far':
       seekVideo(video, FAR_SEEK_SECONDS);
-      return 'Forward 15 seconds';
+      return { icon: 'fast-forward', label: 'Forward 30 seconds', seconds: FAR_SEEK_SECONDS };
   }
 }
