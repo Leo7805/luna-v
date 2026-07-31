@@ -1,9 +1,7 @@
 /** Displays a short-lived, isolated status message above the current page. */
 import { useEffect, useState } from 'react';
+import { VIDEO_CONTROL_CONFIG } from './config';
 import type { OverlayIcon } from './video';
-
-const DISPLAY_DURATION_MS = 600;
-const FADE_DURATION_MS = 400;
 
 /** Represents one stage of the overlay's appearance animation. */
 type OverlayPhase = 'entering' | 'visible' | 'leaving';
@@ -57,10 +55,13 @@ export function Overlay({ icon, label, seconds }: OverlayProps) {
 
   useEffect(() => {
     const animationFrame = window.requestAnimationFrame(() => setPhase('visible'));
-    const fadeTimer = window.setTimeout(() => setPhase('leaving'), DISPLAY_DURATION_MS);
+    const fadeTimer = window.setTimeout(
+      () => setPhase('leaving'),
+      VIDEO_CONTROL_CONFIG.feedback.displayDurationMs,
+    );
     const removeTimer = window.setTimeout(
       () => setIsMounted(false),
-      DISPLAY_DURATION_MS + FADE_DURATION_MS,
+      VIDEO_CONTROL_CONFIG.feedback.displayDurationMs + VIDEO_CONTROL_CONFIG.feedback.fadeDurationMs,
     );
 
     return () => {

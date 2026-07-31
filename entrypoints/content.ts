@@ -2,6 +2,7 @@
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Overlay } from './content/Overlay';
+import { VIDEO_CONTROL_CONFIG } from './content/config';
 import overlayStyles from './content/overlay.css?inline';
 import { getSiteAdapter } from './content/site-adapters';
 import { getShortcut, isEditableTarget, type VideoAction } from './content/shortcut';
@@ -11,8 +12,6 @@ import {
   performVideoAction,
   type VideoFeedback,
 } from './content/video';
-
-const ACCUMULATION_WINDOW_MS = 1_000;
 
 /** Stores the most recent seek action for short-window feedback accumulation. */
 interface SeekAccumulation {
@@ -82,7 +81,8 @@ export default defineContentScript({
       const now = Date.now();
       const previousSeek = latestSeek;
       const canAccumulate =
-        previousSeek?.action === action && now - previousSeek.timestamp <= ACCUMULATION_WINDOW_MS;
+        previousSeek?.action === action &&
+        now - previousSeek.timestamp <= VIDEO_CONTROL_CONFIG.feedback.accumulationWindowMs;
       const totalSeconds = canAccumulate && previousSeek ? previousSeek.seconds + seconds : seconds;
 
       latestSeek = { action, seconds: totalSeconds, timestamp: now };

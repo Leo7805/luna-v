@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:8bc10180307b6f6c6c9edc63392eaffe1d1049592af66e6feacaa280354e101a",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-07-31T03:54:07.851Z",
+    "updatedAt": "2026-07-31T03:55:53.802Z"
+  },
+  "fileNote": {
+    "userNote": "LunaV 内容脚本的集中配置。\n\n\n1. feedback.accumulationWindowMs 1000ms    相同方向键在这段时间内再次按下时会累计跳转提示，例如 5s → 10s，它不决定浮层停留时间。\n2. feedback.displayDurationMs 600ms        浮层完整显示多久后开始淡出。\n3. feedback.fadeDurationMs 400ms           浮层淡出动画持续多久，总可见时间约为 1000ms。\n4. seek.nearSeconds 5秒                    左右箭头的跳转距离。\n5. seek.farSeconds 30秒                    上下箭头的跳转距离。\n6. playbackRate.step 0.25×                 预留给 [ ] 的每次速度增减步长，尚未启用。\n7. playbackRate.min 0.25×                  预留的最低播放速度，尚未启用。\n8. playbackRate.max 3×                     预留的最高播放速度，尚未启用。\n\n",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

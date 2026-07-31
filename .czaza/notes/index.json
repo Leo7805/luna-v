@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-31T03:05:03.387Z",
+  "updatedAt": "2026-07-31T03:54:07.851Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -43,6 +43,12 @@
       "sourceHash": "sha256:cf270df26102a0344586163b225b071633513de95c015e571c6f81c16789a719",
       "programmingLanguage": "typescript",
       "updatedAt": "2026-07-31T03:05:03.387Z"
+    },
+    "entrypoints/content/config.ts": {
+      "noteFile": "files/7f2617438117-c707be30.json",
+      "sourceHash": "sha256:8bc10180307b6f6c6c9edc63392eaffe1d1049592af66e6feacaa280354e101a",
+      "programmingLanguage": "typescript",
+      "updatedAt": "2026-07-31T03:54:07.851Z"
     }
   }
 }

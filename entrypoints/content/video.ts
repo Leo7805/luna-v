@@ -1,9 +1,7 @@
 /** Selects and controls one eligible native video element on the current page. */
+import { VIDEO_CONTROL_CONFIG } from './config';
 import type { VideoAction } from './shortcut';
 import { findSiteVideoTarget } from './site-adapters';
-
-const NEAR_SEEK_SECONDS = 5;
-const FAR_SEEK_SECONDS = 30;
 
 /** Identifies the visual symbol used for one overlay feedback item. */
 export type OverlayIcon = 'rewind' | 'fast-forward' | 'play' | 'pause';
@@ -110,16 +108,32 @@ export function performVideoAction(video: HTMLVideoElement, action: VideoAction)
       video.pause();
       return { icon: 'pause', label: 'Paused' };
     case 'seek-backward':
-      seekVideo(video, -NEAR_SEEK_SECONDS);
-      return { icon: 'rewind', label: 'Back 5 seconds', seconds: NEAR_SEEK_SECONDS };
+      seekVideo(video, -VIDEO_CONTROL_CONFIG.seek.nearSeconds);
+      return {
+        icon: 'rewind',
+        label: `Back ${VIDEO_CONTROL_CONFIG.seek.nearSeconds} seconds`,
+        seconds: VIDEO_CONTROL_CONFIG.seek.nearSeconds,
+      };
     case 'seek-forward':
-      seekVideo(video, NEAR_SEEK_SECONDS);
-      return { icon: 'fast-forward', label: 'Forward 5 seconds', seconds: NEAR_SEEK_SECONDS };
+      seekVideo(video, VIDEO_CONTROL_CONFIG.seek.nearSeconds);
+      return {
+        icon: 'fast-forward',
+        label: `Forward ${VIDEO_CONTROL_CONFIG.seek.nearSeconds} seconds`,
+        seconds: VIDEO_CONTROL_CONFIG.seek.nearSeconds,
+      };
     case 'seek-backward-far':
-      seekVideo(video, -FAR_SEEK_SECONDS);
-      return { icon: 'rewind', label: 'Back 30 seconds', seconds: FAR_SEEK_SECONDS };
+      seekVideo(video, -VIDEO_CONTROL_CONFIG.seek.farSeconds);
+      return {
+        icon: 'rewind',
+        label: `Back ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
+        seconds: VIDEO_CONTROL_CONFIG.seek.farSeconds,
+      };
     case 'seek-forward-far':
-      seekVideo(video, FAR_SEEK_SECONDS);
-      return { icon: 'fast-forward', label: 'Forward 30 seconds', seconds: FAR_SEEK_SECONDS };
+      seekVideo(video, VIDEO_CONTROL_CONFIG.seek.farSeconds);
+      return {
+        icon: 'fast-forward',
+        label: `Forward ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
+        seconds: VIDEO_CONTROL_CONFIG.seek.farSeconds,
+      };
   }
 }
