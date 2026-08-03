@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-03T05:27:27.665Z",
+  "updatedAt": "2026-08-03T06:12:57.395Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -110,9 +110,9 @@
     },
     "entrypoints/content/video/actions.ts": {
       "noteFile": "files/2c9be4e78973-71f87b6c.json",
-      "sourceHash": "sha256:0f74b79109c9e5a08898690c01513aea399374807eb1a1cc21e8a042df275113",
+      "sourceHash": "sha256:f545e8b292f7cce80d755c12bbac1a70625925ecc56ebecebd60e247d9d51cab",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.966Z"
+      "updatedAt": "2026-08-03T06:12:54.060Z"
     },
     "entrypoints/content/video/target.ts": {
       "noteFile": "files/1dbbaedcaa2b-d3a4fc6b.json",
@@ -209,9 +209,9 @@
     },
     "package.json": {
       "noteFile": "files/7ae45ad102ea-acb7da77.json",
-      "sourceHash": "sha256:769ea110f7cf7e1b17c6a9d0bc40a0fac0e000dcf3098b3efe8b4d2361dfff06",
+      "sourceHash": "sha256:653e18ae66a3e9e06bde9cd787aaf96ca57ede228cc530a02dff9034bf7bc9e9",
       "programmingLanguage": "json",
-      "updatedAt": "2026-08-03T05:27:27.665Z"
+      "updatedAt": "2026-08-03T06:12:57.395Z"
     },
     "tsconfig.json": {
       "noteFile": "files/b55cdbef4907-01d20c97.json",
