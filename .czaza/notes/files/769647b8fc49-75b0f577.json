@@ -1,15 +1,15 @@
 {
   "source": {
-    "sourceHash": "sha256:795a79745af9221c102b20c80c9e3ed8144fb926e41235ef862213e9c1b02bb6",
+    "sourceHash": "sha256:f3f1d212c9048b57bc6fcd155e2c6516104f1aa8c109531494bf691b05c1f2ef",
     "sourceHashKind": "text",
     "programmingLanguage": "typescript"
   },
   "defaults": {
     "createdAt": "2026-07-31T10:34:32.677Z",
-    "updatedAt": "2026-07-31T11:32:53.232Z"
+    "updatedAt": "2026-08-03T05:25:55.054Z"
   },
   "fileNote": {
-    "userNote": "快捷键数据源，没有函数。\n\nPOPUP_SHORTCUTS：集中列出每组按键与说明；今后改 0.5 seconds、新增快捷键都改这里。",
+    "userNote": "快捷键数据源，没有函数 （快捷键内容与说明文字）\n\nPOPUP_SHORTCUTS：集中列出每组按键与说明；今后改 0.5 seconds、新增快捷键都改这里。",
     "createdBy": "user"
   },
   "sectionNotes": {},

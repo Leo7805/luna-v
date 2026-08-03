@@ -1,12 +1,20 @@
 /** Performs native playback and timeline operations for the selected video. */
 import { VIDEO_CONTROL_CONFIG } from '../config';
-import type { PlaybackRateAction, VideoAction } from '../keyboard/shortcut';
+import type { PlaybackRateAction, VideoAction, VolumeAction } from '../keyboard/shortcut';
 
 /** Identifies the visual symbol used for one overlay feedback item. */
-export type OverlayIcon = 'rewind' | 'fast-forward' | 'play' | 'pause' | 'speed';
+export type OverlayIcon =
+  | 'rewind'
+  | 'fast-forward'
+  | 'play'
+  | 'pause'
+  | 'speed'
+  | 'volume-down'
+  | 'volume-up'
+  | 'volume-muted';
 
 /** Represents a video action that does not change playback speed. */
-type NativeVideoAction = Exclude<VideoAction, PlaybackRateAction>;
+type NativeVideoAction = Exclude<VideoAction, PlaybackRateAction | VolumeAction>;
 
 /** Describes the visual feedback produced by a completed video operation. */
 export interface VideoFeedback {
@@ -38,6 +46,7 @@ interface SeekBounds {
 }
 
 const SEEK_EPSILON_SECONDS = 0.01;
+const END_SEEK_OFFSET_SECONDS = 0.1;
 
 /**
  * Creates feedback for the playback state that a native toggle is expected to produce.
@@ -144,6 +153,28 @@ function performSeek(
 }
 
 /**
+ * Seeks a video to the start or just before the end of its native seekable range.
+ *
+ * @param video - The native video to seek.
+ * @param edge - The requested start or end of the seekable range.
+ * @returns Feedback for the reached position or unavailable end.
+ */
+function seekToEdge(video: HTMLVideoElement, edge: SeekBoundary): VideoFeedback {
+  const { start, end } = getSeekBounds(video);
+  if (edge === 'start') {
+    video.currentTime = start;
+    return { icon: 'rewind', label: 'Start' };
+  }
+
+  if (end === null) {
+    return { icon: 'fast-forward', label: 'Live' };
+  }
+
+  video.currentTime = Math.max(start, end - END_SEEK_OFFSET_SECONDS);
+  return { icon: 'fast-forward', label: `End - ${END_SEEK_OFFSET_SECONDS}s` };
+}
+
+/**
  * Performs a supported native video operation and returns its overlay feedback.
  *
  * @param video - The selected native video.
@@ -202,5 +233,9 @@ export function performVideoAction(video: HTMLVideoElement, action: NativeVideoA
         'fast-forward',
         `Forward ${VIDEO_CONTROL_CONFIG.seek.farSeconds} seconds`,
       );
+    case 'seek-start':
+      return seekToEdge(video, 'start');
+    case 'seek-end':
+      return seekToEdge(video, 'end');
   }
 }

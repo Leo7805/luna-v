@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:dc9a4fa506e31105e93f2e04050fa8949509e8221843af30d291ee12b42ced58",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-08-03T01:45:27.036Z",
+    "updatedAt": "2026-08-03T01:45:27.036Z"
+  },
+  "fileNote": {
+    "userNote": "音量领域逻辑。调音量会自动取消静音、限制在 0–100%；静音切换保留原始音量。",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

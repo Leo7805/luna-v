@@ -1,0 +1,17 @@
+{
+  "source": {
+    "sourceHash": "sha256:c44598671ecc5c912363ea3cc2ad6df8b616c4d19a4a75013aa08cd5db246a85",
+    "sourceHashKind": "text",
+    "programmingLanguage": "typescript"
+  },
+  "defaults": {
+    "createdAt": "2026-08-03T03:32:42.562Z",
+    "updatedAt": "2026-08-03T03:32:42.562Z"
+  },
+  "fileNote": {
+    "userNote": "共享设置读取、写入与校验逻辑",
+    "createdBy": "user"
+  },
+  "sectionNotes": {},
+  "lineNotes": {}
+}

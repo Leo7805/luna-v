@@ -1,20 +1,16 @@
-/** Centralizes adjustable defaults for LunaV's in-page video controls. */
+/** Keeps active user-configurable values for LunaV's in-page video controls. */
+import type { VideoControlSettings } from '../../utils/settings';
 
 /** Provides the default behavior values for keyboard controls and visual feedback. */
-export const VIDEO_CONTROL_CONFIG = {
-  feedback: {
-    accumulationWindowMs: 1_000,
-    displayDurationMs: 600,
-    fadeDurationMs: 400,
-  },
-  seek: {
-    fineSeconds: 0.5,
-    nearSeconds: 5,
-    farSeconds: 30,
-  },
-  playbackRate: {
-    step: 0.25,
-    min: 0.25,
-    max: 3,
-  },
-} as const;
+export const DEFAULT_VIDEO_CONTROL_CONFIG: VideoControlSettings = {
+  feedback: { accumulationWindowMs: 1_000, displayDurationMs: 600, fadeDurationMs: 400 },
+  seek: { fineSeconds: 1, nearSeconds: 5, farSeconds: 30 },
+  playbackRate: { default: 1, step: 0.25, min: 0.25, max: 5 },
+  volume: { step: 0.05, min: 0, max: 1, defaultUnmuted: 0.6 },
+};
+
+/** Represents the settings currently active in the page controller. */
+export let VIDEO_CONTROL_CONFIG: VideoControlSettings = structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG);
+
+/** Replaces active settings after a persisted preference change. */
+export function setVideoControlConfig(settings: VideoControlSettings): void { VIDEO_CONTROL_CONFIG = settings; }

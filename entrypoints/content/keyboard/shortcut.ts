@@ -9,11 +9,23 @@ export type VideoAction =
   | 'seek-forward'
   | 'seek-backward-far'
   | 'seek-forward-far'
+  | 'seek-start'
+  | 'seek-end'
   | 'decrease-playback-rate'
-  | 'increase-playback-rate';
+  | 'increase-playback-rate'
+  | 'reset-playback-rate'
+  | 'decrease-volume'
+  | 'increase-volume'
+  | 'toggle-muted';
 
 /** Represents one supported playback-speed action. */
-export type PlaybackRateAction = 'decrease-playback-rate' | 'increase-playback-rate';
+export type PlaybackRateAction =
+  | 'decrease-playback-rate'
+  | 'increase-playback-rate'
+  | 'reset-playback-rate';
+
+/** Represents one supported native volume action. */
+export type VolumeAction = 'decrease-volume' | 'increase-volume' | 'toggle-muted';
 
 /** Describes the operation associated with one shortcut. */
 export interface Shortcut {
@@ -23,17 +35,23 @@ export interface Shortcut {
 
 const SHORTCUTS: Readonly<Record<string, Shortcut>> = {
   ' ': { action: 'toggle-playback' },
+  Enter: { action: 'toggle-muted' },
   ',': { action: 'seek-backward-fine' },
   '.': { action: 'seek-forward-fine' },
   ArrowLeft: { action: 'seek-backward' },
   ArrowRight: { action: 'seek-forward' },
   ArrowUp: { action: 'seek-backward-far' },
   ArrowDown: { action: 'seek-forward-far' },
+  '<': { action: 'seek-start' },
+  '>': { action: 'seek-end' },
 };
 
 const CODE_SHORTCUTS: Readonly<Record<string, Shortcut>> = {
   BracketLeft: { action: 'decrease-playback-rate' },
   BracketRight: { action: 'increase-playback-rate' },
+  Backslash: { action: 'reset-playback-rate' },
+  Semicolon: { action: 'decrease-volume' },
+  Quote: { action: 'increase-volume' },
 };
 
 /**
@@ -54,7 +72,23 @@ export function getShortcut(event: KeyboardEvent): Shortcut | null {
  * @returns True when the action changes playback speed.
  */
 export function isPlaybackRateAction(action: VideoAction): action is PlaybackRateAction {
-  return action === 'decrease-playback-rate' || action === 'increase-playback-rate';
+  return (
+    action === 'decrease-playback-rate' ||
+    action === 'increase-playback-rate' ||
+    action === 'reset-playback-rate'
+  );
+}
+
+/**
+ * Determines whether an action changes a video's native volume or mute state.
+ *
+ * @param action - The supported video action to inspect.
+ * @returns True when the action changes volume or mute state.
+ */
+export function isVolumeAction(action: VideoAction): action is VolumeAction {
+  return (
+    action === 'decrease-volume' || action === 'increase-volume' || action === 'toggle-muted'
+  );
 }
 
 /**

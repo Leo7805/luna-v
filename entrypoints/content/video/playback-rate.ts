@@ -27,6 +27,20 @@ function getNativePlaybackRateTarget(video: HTMLVideoElement, direction: -1 | 1)
 }
 
 /**
+ * Gets the playback speed that one supported action would produce.
+ *
+ * @param video - The native video whose playback speed is read.
+ * @param action - The requested playback-speed action.
+ * @returns The target playback speed.
+ */
+function getPlaybackRateTarget(video: HTMLVideoElement, action: PlaybackRateAction): number {
+  if (action === 'reset-playback-rate') return VIDEO_CONTROL_CONFIG.playbackRate.default;
+
+  const direction = action === 'increase-playback-rate' ? 1 : -1;
+  return getNativePlaybackRateTarget(video, direction);
+}
+
+/**
  * Adjusts a video's playback rate within LunaV's configured bounds.
  *
  * @param video - The native video whose playback rate changes.
@@ -51,11 +65,11 @@ export function getPlaybackRateFeedback(
   video: HTMLVideoElement,
   action: PlaybackRateAction,
 ): VideoFeedback | null {
-  const direction = action === 'increase-playback-rate' ? 1 : -1;
   const siteAdapter = getSiteAdapter(window.location.hostname);
-  const playbackRate = siteAdapter?.getPlaybackRateTarget
-    ? siteAdapter.getPlaybackRateTarget(direction)
-    : getNativePlaybackRateTarget(video, direction);
+  const playbackRate =
+    action !== 'reset-playback-rate' && siteAdapter?.getPlaybackRateTarget
+      ? siteAdapter.getPlaybackRateTarget(action === 'increase-playback-rate' ? 1 : -1)
+      : getPlaybackRateTarget(video, action);
 
   return playbackRate === null
     ? null
@@ -73,15 +87,21 @@ export async function performPlaybackRateAction(
   video: HTMLVideoElement,
   action: PlaybackRateAction,
 ): Promise<VideoFeedback | null> {
-  const direction = action === 'increase-playback-rate' ? 1 : -1;
   const siteAdapter = getSiteAdapter(window.location.hostname);
 
-  if (siteAdapter?.adjustPlaybackRate) {
-    const playbackRate = await siteAdapter.adjustPlaybackRate(direction);
+  if (action !== 'reset-playback-rate' && siteAdapter?.adjustPlaybackRate) {
+    const playbackRate = await siteAdapter.adjustPlaybackRate(
+      action === 'increase-playback-rate' ? 1 : -1,
+    );
     return playbackRate === null
       ? null
       : { icon: 'speed', label: `Speed ${formatPlaybackRate(playbackRate)}` };
   }
 
-  return adjustNativePlaybackRate(video, direction);
+  if (action === 'reset-playback-rate') {
+    video.playbackRate = VIDEO_CONTROL_CONFIG.playbackRate.default;
+    return { icon: 'speed', label: `Speed ${formatPlaybackRate(video.playbackRate)}` };
+  }
+
+  return adjustNativePlaybackRate(video, action === 'increase-playback-rate' ? 1 : -1);
 }

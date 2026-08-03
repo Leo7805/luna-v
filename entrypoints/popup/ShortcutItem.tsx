@@ -1,12 +1,11 @@
 /** Renders one keyboard shortcut and its description in LunaV's popup. */
 import { ShortcutKey } from './ShortcutKey';
+import type { PopupShortcutGroup } from './shortcuts';
 
 /** Props for one keyboard shortcut row. */
 interface ShortcutItemProps {
-  /** The keyboard labels that activate the shortcut. */
-  keys: readonly string[];
-  /** The user-facing description of the shortcut. */
-  description: string;
+  /** The keyboard-control groups displayed in the row. */
+  groups: readonly PopupShortcutGroup[];
 }
 
 /**
@@ -15,15 +14,24 @@ interface ShortcutItemProps {
  * @param props - The shortcut row configuration.
  * @returns The shortcut row definition elements.
  */
-export function ShortcutItem({ keys, description }: ShortcutItemProps) {
+export function ShortcutItem({ groups }: ShortcutItemProps) {
   return (
-    <div className="flex items-center gap-3">
-      <dt className="flex gap-1">
-        {keys.map((key) => (
-          <ShortcutKey key={key} label={key} />
-        ))}
-      </dt>
-      <dd className="text-sm text-slate-300">{description}</dd>
+    <div className="grid grid-cols-2 items-center gap-x-4">
+      {groups.map((group) => (
+        <div
+          key={group.description}
+          className={`flex min-w-0 items-center gap-1.5 ${groups.length === 1 ? 'col-span-2' : ''}`}
+        >
+          <div className="flex shrink-0 gap-1">
+            {group.keys.map((key) => (
+              <ShortcutKey key={key} label={key} />
+            ))}
+          </div>
+          <span className="min-w-0 whitespace-nowrap text-xs leading-tight text-slate-300">
+            {group.description}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

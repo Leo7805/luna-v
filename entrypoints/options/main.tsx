@@ -1,0 +1,7 @@
+/** Mounts LunaV's full-page extension settings application. */
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { SettingsApp } from './SettingsApp';
+import './style.css';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><SettingsApp /></React.StrictMode>);

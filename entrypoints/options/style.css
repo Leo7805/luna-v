@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+body { margin: 0; background: #020617; color: #e2e8f0; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+main { max-width: 768px; margin: 0 auto; padding: 48px 24px 72px; }
+header { display: grid; gap: 6px; margin-bottom: 40px; }
+header p { margin: 0; color: #c4b5fd; font-size: 18px; font-weight: 600; letter-spacing: .16em; }
+.title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+h1 { margin: 0; color: #cbd5e1; font-size: 30px; }
+header span { color: #67e8f9; font-size: 14px; }
+section { margin-top: 34px; }
+h2 { margin: 0 0 16px; color: #6ee7b7; font-size: 18px; }
+label { display: grid; gap: 6px; color: #cbd5e1; font-size: 13px; }
+input { border: 1px solid #334155; border-radius: 8px; background: #020617; color: inherit; padding: 8px 10px; }
+.speed-controls { display: flex; align-items: flex-start; gap: 20px; }
+.playback-fields { display: flex; align-items: flex-start; gap: 128px; }
+.speed-field { display: flex; align-items: center; gap: 16px; color: #94a3b8; }
+.aligned-field { display: grid; grid-template-columns: 5.5rem max-content; align-items: center; column-gap: 8px; color: #94a3b8; }
+.speed-field > input, .aligned-field > input, .seek-field > input { width: 4.5rem; padding: 6px 8px; text-align: center; }
+.speed-field > input[aria-invalid="true"], .aligned-field > input[aria-invalid="true"], .seek-field > input[aria-invalid="true"], .range-input.has-error { border-color: #7f1d1d; }
+.speed-field > input[aria-invalid="true"]:focus, .aligned-field > input[aria-invalid="true"]:focus, .seek-field > input[aria-invalid="true"]:focus, .range-input.has-error:focus-within { border-color: #b91c1c; outline: 2px solid rgb(127 29 29 / .35); outline-offset: 2px; }
+.range-input { display: grid; grid-template-columns: 3.5rem max-content 3.5rem; align-items: center; column-gap: 8px; width: fit-content; border: 1px solid #334155; border-radius: 8px; padding: 2px 8px; }
+.range-input input { width: 3.5rem; border: 0; border-radius: 0; padding: 4px; outline: 0; text-align: center; }
+.range-input strong { color: #64748b; font-weight: 400; }
+.field-errors { margin: 8px 0 0 92px; color: #b91c1c; font-size: 13px; }
+.field-errors p { margin: 0; }
+.seek-controls { display: grid; gap: 14px; }
+.seek-row { display: flex; align-items: flex-start; gap: 20px; }
+.seek-row > .keys { padding-top: 2px; }
+.seek-field { display: grid; grid-template-columns: 5.5rem max-content; align-items: center; column-gap: 8px; color: #94a3b8; }
+.seek-field-error { grid-column: 2; margin: 0; color: #b91c1c; }
+.keys { display: flex; gap: 6px; }
+.keys kbd { border: 1px solid rgb(110 231 183 / .35); border-radius: 8px; background: rgb(16 185 129 / .1); color: #6ee7b7; padding: 8px 11px; font-weight: 700; }
+footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 38px; padding-top: 18px; border-top: 1px solid #1e293b; }
+button { min-height: 44px; border: 1px solid #334155; border-radius: 8px; background: transparent; color: #e2e8f0; padding: 11px 22px; font-size: 15px; cursor: pointer; transition: background-color 150ms, border-color 150ms, color 150ms; }
+button:hover { border-color: #475569; background: #1e293b; color: #f8fafc; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+button.primary { border-color: #059669; background: #059669; color: #fff; }
+button.primary:hover:not(:disabled) { border-color: #10b981; background: #10b981; }

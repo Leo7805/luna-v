@@ -43,6 +43,35 @@ function PlaybackIcon({ name }: { name: OverlayIcon }) {
     );
   }
 
+  if (name === 'volume-muted') {
+    return (
+      <>
+        <path d="M3 9v6h4l5 4V5L7 9H3Z" fill="currentColor" stroke="none" />
+        <path
+          d="m4 4 16 16M20 4 4 20"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeWidth="2.5"
+        />
+      </>
+    );
+  }
+
+  if (name === 'volume-down' || name === 'volume-up') {
+    return (
+      <path
+        d={
+          name === 'volume-down'
+            ? 'M4 10v4h4l5 4V6l-5 4Zm11.5 2a3.5 3.5 0 0 0-2-3.15v1.72a2 2 0 0 1 0 2.86v1.72a3.5 3.5 0 0 0 2-3.15Z'
+            : 'M4 10v4h4l5 4V6l-5 4Zm11.5 0a3.5 3.5 0 0 0-2-3.15v1.72a2 2 0 0 1 0 2.86v1.72a3.5 3.5 0 0 0 2-3.15Zm0-7.2v1.7a6 6 0 0 1 0 11v1.7a7.5 7.5 0 0 0 0-14.4Z'
+        }
+        fill="currentColor"
+        stroke="none"
+      />
+    );
+  }
+
   const isRewind = name === 'rewind';
   return (
     <path

@@ -8,9 +8,11 @@ import {
   getShortcut,
   isEditableTarget,
   isPlaybackRateAction,
+  isVolumeAction,
   type VideoAction,
 } from '../keyboard/shortcut';
 import { getToggledPlaybackFeedback, performVideoAction } from '../video/actions';
+import { performVolumeAction } from '../video/volume';
 
 /** Stores the most recent seek action for short-window feedback accumulation. */
 interface SeekAccumulation {
@@ -72,7 +74,10 @@ export function startKeyboardController(): void {
    */
   function queuePlaybackRateAdjustment(
     video: HTMLVideoElement,
-    action: Extract<VideoAction, 'decrease-playback-rate' | 'increase-playback-rate'>,
+    action: Extract<
+      VideoAction,
+      'decrease-playback-rate' | 'increase-playback-rate' | 'reset-playback-rate'
+    >,
   ): void {
     playbackRateAdjustmentQueue = playbackRateAdjustmentQueue
       .then(() => performPlaybackRateAction(video, action))
@@ -109,6 +114,15 @@ export function startKeyboardController(): void {
       consumeShortcutEvent(event);
       overlayPresenter.show(feedback);
       queuePlaybackRateAdjustment(video, shortcut.action);
+      return;
+    }
+
+    if (isVolumeAction(shortcut.action)) {
+      const feedback = performVolumeAction(video, shortcut.action);
+      latestSeek = null;
+      handledShortcutCodes.add(event.code);
+      consumeShortcutEvent(event);
+      overlayPresenter.show(feedback);
       return;
     }
 
