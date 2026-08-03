@@ -46,7 +46,7 @@ interface SeekBounds {
 }
 
 const SEEK_EPSILON_SECONDS = 0.01;
-const END_SEEK_OFFSET_SECONDS = 0.1;
+const END_SEEK_OFFSET_SECONDS = 0.5;
 
 /**
  * Creates feedback for the playback state that a native toggle is expected to produce.
@@ -171,7 +171,7 @@ function seekToEdge(video: HTMLVideoElement, edge: SeekBoundary): VideoFeedback 
   }
 
   video.currentTime = Math.max(start, end - END_SEEK_OFFSET_SECONDS);
-  return { icon: 'fast-forward', label: `End - ${END_SEEK_OFFSET_SECONDS}s` };
+  return { icon: 'fast-forward', label: 'End' };
 }
 
 /**
