@@ -17,8 +17,21 @@ export interface OverlayPresenter {
  * @returns A presenter that displays feedback once the document root is available.
  */
 export function createOverlayPresenter(): OverlayPresenter {
+  let host: HTMLDivElement | null = null;
   let root: ReturnType<typeof createRoot> | null = null;
   let overlayKey = 0;
+
+  /**
+   * Moves the overlay into the current fullscreen subtree when one is active.
+   *
+   * @returns Nothing.
+   */
+  function moveOverlayHost(): void {
+    if (!host || !document.documentElement) return;
+
+    const container = document.fullscreenElement ?? document.documentElement;
+    if (host.parentElement !== container) container.append(host);
+  }
 
   /**
    * Mounts the React overlay inside an isolated shadow root.
@@ -28,7 +41,7 @@ export function createOverlayPresenter(): OverlayPresenter {
   function mountOverlay(): void {
     if (root || !document.documentElement) return;
 
-    const host = document.createElement('div');
+    host = document.createElement('div');
     host.dataset.lunaVOverlay = 'true';
     host.style.pointerEvents = 'none';
 
@@ -37,9 +50,10 @@ export function createOverlayPresenter(): OverlayPresenter {
     const styleElement = document.createElement('style');
     styleElement.textContent = overlayStyles;
     shadowRoot.append(styleElement, mountPoint);
-    document.documentElement.append(host);
+    moveOverlayHost();
 
     root = createRoot(mountPoint);
+    document.addEventListener('fullscreenchange', moveOverlayHost);
   }
 
   if (document.documentElement) mountOverlay();

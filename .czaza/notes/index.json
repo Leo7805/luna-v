@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-03T06:12:57.395Z",
+  "updatedAt": "2026-08-04T11:49:00.286Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -158,9 +158,9 @@
     },
     "entrypoints/content/overlay/overlay-host.ts": {
       "noteFile": "files/415d68c1385a-d8d48f17.json",
-      "sourceHash": "sha256:ae5417a28c0943959e3f2c2cd988281bcdfdc0a47b8f2a086f2f1e87fc459ddb",
+      "sourceHash": "sha256:067ed13aad1f4cd28cbcf3e04a9b90d818e00c9129eb9583290fbf87f347173a",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T11:34:26.047Z"
+      "updatedAt": "2026-08-04T11:49:00.286Z"
     },
     "entrypoints/popup/index.html": {
       "noteFile": "files/2c7eeba9066d-344f1bb5.json",
