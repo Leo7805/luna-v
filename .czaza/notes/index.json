@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-04T11:49:00.286Z",
+  "updatedAt": "2026-08-05T13:04:00.321Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
       "noteFile": "files/09c55dc0ee48-71695bf5.json",
-      "sourceHash": "sha256:b9a63e89f4ad4ddcdcb4b9e270c58a6efc6692eea09409e17f026ef8793e32ba",
+      "sourceHash": "sha256:7b2fc4a46d45d09e9c3e687887ef9db177d96801ac355aa2c97761a485f9bcc3",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:59.011Z"
+      "updatedAt": "2026-08-05T13:04:00.321Z"
     },
     "": {
       "noteFile": "files/e3b0c44298fc-45af4a98.json",
@@ -16,21 +16,21 @@
     },
     "entrypoints/content.ts": {
       "noteFile": "files/8ce8b0bd9bcf-da468464.json",
-      "sourceHash": "sha256:cbb4df51f176b3b62a566779430d26ee8ddddd11ecfcf1e80b91aa97d796a6ff",
+      "sourceHash": "sha256:03f3fe1de4fadb118cf849450ac287f42c46a5cd942a30e6a07ae2f24761e9b7",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:59.006Z"
+      "updatedAt": "2026-08-05T13:04:00.318Z"
     },
     "entrypoints/content/config.ts": {
       "noteFile": "files/7f2617438117-c707be30.json",
-      "sourceHash": "sha256:9119668e132098b629d29bccee6a48002697617c0a18f09714eb83108c608d18",
+      "sourceHash": "sha256:9fc9bf78069abed660ce842dd19d591397b3df19ddd513944435dfcb9f658824",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.994Z"
+      "updatedAt": "2026-08-05T13:04:00.309Z"
     },
     "entrypoints/popup/Popup.tsx": {
       "noteFile": "files/80f4df32b81a-e1548bf8.json",
-      "sourceHash": "sha256:99158a7be42535dd07e2559d4e366c4038f36e5f88b81345c2dfffdf4d701f59",
+      "sourceHash": "sha256:48cfe281ab1d161b1a85d4c497a359d2cfcfc88b5dd011508f9df2dbc08d59c2",
       "programmingLanguage": "typescriptreact",
-      "updatedAt": "2026-08-03T05:23:34.505Z"
+      "updatedAt": "2026-08-05T10:49:20.271Z"
     },
     "entrypoints/popup/ShortcutItem.tsx": {
       "noteFile": "files/f2e2768511e5-2811594f.json",
@@ -46,9 +46,9 @@
     },
     "entrypoints/popup/shortcuts.ts": {
       "noteFile": "files/769647b8fc49-75b0f577.json",
-      "sourceHash": "sha256:f3f1d212c9048b57bc6fcd155e2c6516104f1aa8c109531494bf691b05c1f2ef",
+      "sourceHash": "sha256:b294c0a33a2cd881fdf858a2bfb2890eff1c0bb8e40971ee9650b4bf19005059",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:20.890Z"
+      "updatedAt": "2026-08-05T13:04:00.289Z"
     },
     "entrypoints/popup/main.tsx": {
       "noteFile": "files/d071893e9aac-d158e18f.json",
@@ -98,9 +98,9 @@
     },
     "entrypoints/content/controller/keyboard-controller.ts": {
       "noteFile": "files/2fb5dafdcdd6-e9e73da4.json",
-      "sourceHash": "sha256:0c7f343a8463c89ea2445e995e15c8c0207eada34825ebf3249db6a308880813",
+      "sourceHash": "sha256:9e2541b1cb0d60f3f1bd371633c34adfacc56e543748455a87de0ad2903d1453",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.977Z"
+      "updatedAt": "2026-08-05T13:04:00.274Z"
     },
     "entrypoints/content/keyboard/shortcut.ts": {
       "noteFile": "files/ebd59b57d34e-6742129a.json",
@@ -110,21 +110,21 @@
     },
     "entrypoints/content/video/actions.ts": {
       "noteFile": "files/2c9be4e78973-71f87b6c.json",
-      "sourceHash": "sha256:f545e8b292f7cce80d755c12bbac1a70625925ecc56ebecebd60e247d9d51cab",
+      "sourceHash": "sha256:548c017c5f4297cd5599b86fe89e905479070f9de336562a900b0537e53a73af",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T06:12:54.060Z"
+      "updatedAt": "2026-08-05T13:04:00.270Z"
     },
     "entrypoints/content/video/target.ts": {
       "noteFile": "files/1dbbaedcaa2b-d3a4fc6b.json",
-      "sourceHash": "sha256:abdf0cc139d2f994794908e00f14c83c7925a855216871bd91a666cf0e60d290",
+      "sourceHash": "sha256:10c709541c511ca0269b0a9d44ae530443be87066b461ba80fb19447dd23ebfb",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T11:29:09.066Z"
+      "updatedAt": "2026-08-05T13:04:00.266Z"
     },
     "entrypoints/content/video/playback-rate.ts": {
       "noteFile": "files/9b6db2df2d9f-69cb423a.json",
-      "sourceHash": "sha256:65d68aeaa4d92c72c45c701a3b25751d1c36a917cfe6b3b59ffdd0f9a941cd12",
+      "sourceHash": "sha256:01e6d9fc04d3dfb7fd5454e4759f762808c28acfcf63a2bcd424325ebd6fa518",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.961Z"
+      "updatedAt": "2026-08-05T13:04:00.262Z"
     },
     "entrypoints/content/video/site-adapters/echo360.ts": {
       "noteFile": "files/05cd23d5670d-aa442e6f.json",
@@ -140,15 +140,15 @@
     },
     "entrypoints/content/overlay/Overlay.tsx": {
       "noteFile": "files/d299e6e7f6e1-8d5455fc.json",
-      "sourceHash": "sha256:1a81631fc76a268ba5b488fc70fe2424782dc3ab1098dc0788e7136271d3215d",
+      "sourceHash": "sha256:632cf23212e7ded6a626eb11d75d815f934442c913e972de077494d7da24b8c5",
       "programmingLanguage": "typescriptreact",
-      "updatedAt": "2026-08-03T05:25:58.986Z"
+      "updatedAt": "2026-08-05T13:04:00.279Z"
     },
     "entrypoints/content/overlay/overlay.css": {
       "noteFile": "files/bafcf9d96ffa-124b1b84.json",
-      "sourceHash": "sha256:f6644250ce7d3ac75f40a4010b74905db46e9433e39353a4473e4d03ca28e7fc",
+      "sourceHash": "sha256:900f47fd6e3ed4ab756f49d8c26c7a65cb99675c9642c595f7553a82a34cbb81",
       "programmingLanguage": "css",
-      "updatedAt": "2026-07-31T11:31:28.844Z"
+      "updatedAt": "2026-08-05T13:04:00.284Z"
     },
     "entrypoints/content/video/site-adapters/types.ts": {
       "noteFile": "files/8c96b354512f-a023e6d3.json",
@@ -158,9 +158,9 @@
     },
     "entrypoints/content/overlay/overlay-host.ts": {
       "noteFile": "files/415d68c1385a-d8d48f17.json",
-      "sourceHash": "sha256:067ed13aad1f4cd28cbcf3e04a9b90d818e00c9129eb9583290fbf87f347173a",
+      "sourceHash": "sha256:9ad922baf9c46bd0c3f13aa28257a98cf36c38a50ccaf57d89539cb92bab4ab0",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-04T11:49:00.286Z"
+      "updatedAt": "2026-08-05T13:04:00.304Z"
     },
     "entrypoints/popup/index.html": {
       "noteFile": "files/2c7eeba9066d-344f1bb5.json",
@@ -263,15 +263,15 @@
     },
     "entrypoints/content/video/volume.ts": {
       "noteFile": "files/f56be633ed41-a807577b.json",
-      "sourceHash": "sha256:dc9a4fa506e31105e93f2e04050fa8949509e8221843af30d291ee12b42ced58",
+      "sourceHash": "sha256:eebc0b8c67253a18b908247250f09d1f3e0af8916edca9e1f3fb5a9a687250d6",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.951Z"
+      "updatedAt": "2026-08-05T13:04:00.257Z"
     },
     "utils/settings.ts": {
       "noteFile": "files/3def2f066359-23ae2712.json",
-      "sourceHash": "sha256:c44598671ecc5c912363ea3cc2ad6df8b616c4d19a4a75013aa08cd5db246a85",
+      "sourceHash": "sha256:f1e63d58bea6149e96ab60fb435b7584b684be7e0ffba644698909ae082913e1",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.945Z"
+      "updatedAt": "2026-08-05T13:04:00.251Z"
     }
   }
 }

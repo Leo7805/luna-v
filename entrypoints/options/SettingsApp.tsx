@@ -1,6 +1,6 @@
 /** Renders and persists grouped runtime controls for LunaV. */
 import { useEffect, useState } from 'react';
-import { DEFAULT_VIDEO_CONTROL_CONFIG } from '../content/config';
+import { DEFAULT_VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
 import {
   getPlaybackRateRangeValidationError,
   getPlaybackRateStepValidationError,
@@ -11,7 +11,7 @@ import {
   readSettings,
   writeSettings,
   type VideoControlSettings,
-} from '../../utils/settings';
+} from '@/utils/settings';
 
 const SEEK_FIELDS = [
   ['fineSeconds', 'Fine seek', [',', '.']],

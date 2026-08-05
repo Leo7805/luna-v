@@ -1,6 +1,6 @@
 /** Performs native volume and mute operations for the selected video. */
-import { VIDEO_CONTROL_CONFIG } from '../config';
-import type { VolumeAction } from '../keyboard/shortcut';
+import { VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
+import type { VolumeAction } from '@/entrypoints/content/keyboard/shortcut';
 import type { VideoFeedback } from './actions';
 
 /** Remembers the last audible native volume for each video during the current page session. */

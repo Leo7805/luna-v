@@ -1,12 +1,12 @@
 {
   "source": {
-    "sourceHash": "sha256:99158a7be42535dd07e2559d4e366c4038f36e5f88b81345c2dfffdf4d701f59",
+    "sourceHash": "sha256:48cfe281ab1d161b1a85d4c497a359d2cfcfc88b5dd011508f9df2dbc08d59c2",
     "sourceHashKind": "text",
     "programmingLanguage": "typescriptreact"
   },
   "defaults": {
     "createdAt": "2026-07-31T10:33:30.592Z",
-    "updatedAt": "2026-08-03T05:23:33.232Z"
+    "updatedAt": "2026-08-05T13:04:00.298Z"
   },
   "fileNote": {
     "userNote": "整个 Popup 根 React 组件。（Popup 页面结构与 Settings 按钮。）\n\nPopup()：渲染标题与快捷键列表，并通过 map 生成每一行。",

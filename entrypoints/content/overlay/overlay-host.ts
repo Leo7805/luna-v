@@ -3,7 +3,7 @@ import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Overlay } from './Overlay';
 import overlayStyles from './overlay.css?inline';
-import type { VideoFeedback } from '../video/actions';
+import type { VideoFeedback } from '@/entrypoints/content/video/actions';
 
 /** Presents transient video-control feedback above the current page. */
 export interface OverlayPresenter {
@@ -43,13 +43,13 @@ export function createOverlayPresenter(): OverlayPresenter {
 
     host = document.createElement('div');
     host.dataset.lunaVOverlay = 'true';
-    host.style.pointerEvents = 'none';
 
     const shadowRoot = host.attachShadow({ mode: 'open' });
     const mountPoint = document.createElement('div');
-    const styleElement = document.createElement('style');
-    styleElement.textContent = overlayStyles;
-    shadowRoot.append(styleElement, mountPoint);
+    const styleSheet = new CSSStyleSheet();
+    styleSheet.replaceSync(overlayStyles);
+    shadowRoot.adoptedStyleSheets = [styleSheet];
+    shadowRoot.append(mountPoint);
     moveOverlayHost();
 
     root = createRoot(mountPoint);

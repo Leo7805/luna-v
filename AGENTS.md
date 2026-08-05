@@ -75,7 +75,7 @@ Wait for confirmation before creating or editing code. The user's explicit reque
 - All code comments must be written in English.
 - Every source file must have a concise English file-level comment explaining its purpose.
 - TypeScript and React functions, classes, and methods require concise JSDoc. Include `@param` and `@returns` whenever applicable.
-- Use configured import aliases for cross-directory imports and relative imports within a directory.
+- Use `@/` import aliases for every cross-file import. Do not write relative-paths with `..`.
 - Update durable documentation when a decision, architecture, or workflow changes.
 - Create `docs/context.md` only with approval. Keep it concise and use `Completed`, `In Progress`, `Next Step`, and `Future Improvements` where applicable.
 

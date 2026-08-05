@@ -1,9 +1,14 @@
 /** Composes LunaV's keyboard shortcut reference popup. */
 import { useEffect, useState } from 'react';
-import { DEFAULT_VIDEO_CONTROL_CONFIG } from '../content/config';
-import { readSettings, subscribeSettings, type VideoControlSettings } from '../../utils/settings';
+import { DEFAULT_VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
+import { readSettings, subscribeSettings, type VideoControlSettings } from '@/utils/settings';
 import { ShortcutItem } from './ShortcutItem';
 import { getPopupShortcuts } from './shortcuts';
+import coffeeImage from '@/assets/black-button.png';
+
+const WEB_STORE_URL = 'https://chromewebstore.google.com/detail/keyboard-video-controls-l/bnigppeaeiopniiknljifpkgjmkcfgkf';
+// FIXME: Replace with your actual Buy Me a Coffee / Ko-fi URL.
+const COFFEE_URL = 'https://buymeacoffee.com/jinleo';
 
 /**
  * Renders LunaV's complete popup interface.
@@ -41,7 +46,7 @@ export function Popup() {
             />
           ))}
         </dl>
-        <footer className="mt-3 border-t border-slate-800 pt-2">
+        <footer className="mt-3 flex items-center justify-between border-t border-slate-800 pt-2">
           <button
             type="button"
             className="inline-flex cursor-pointer items-center gap-1.5 rounded-md px-1.5 py-1 text-xs text-slate-400 transition hover:bg-slate-800 hover:text-cyan-200"
@@ -52,6 +57,25 @@ export function Popup() {
             </svg>
             Settings
           </button>
+          <a
+            href={WEB_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-xs text-slate-400 transition hover:bg-slate-800 hover:text-amber-200"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-3.5 fill-none stroke-current stroke-2">
+              <path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.74 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z" />
+            </svg>
+            Rate
+          </a>
+          <a
+            href={COFFEE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-md px-1.5 py-1 transition hover:bg-slate-800 hover:scale-105 active:scale-95"
+          >
+            <img src={coffeeImage} alt="Buy me a coffee" className="h-8 w-auto" />
+          </a>
         </footer>
       </section>
     </main>

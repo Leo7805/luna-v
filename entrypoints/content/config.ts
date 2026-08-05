@@ -1,5 +1,5 @@
 /** Keeps active user-configurable values for LunaV's in-page video controls. */
-import type { VideoControlSettings } from '../../utils/settings';
+import type { VideoControlSettings } from '@/utils/settings';
 
 /** Provides the default behavior values for keyboard controls and visual feedback. */
 export const DEFAULT_VIDEO_CONTROL_CONFIG: VideoControlSettings = {

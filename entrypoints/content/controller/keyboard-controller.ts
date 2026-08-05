@@ -1,18 +1,18 @@
 /** Coordinates page keyboard events with LunaV's video controls and feedback. */
-import { VIDEO_CONTROL_CONFIG } from '../config';
-import { createOverlayPresenter } from '../overlay/overlay-host';
-import { getPlaybackRateFeedback, performPlaybackRateAction } from '../video/playback-rate';
-import { getSiteAdapter } from '../video/site-adapters';
-import { findTargetVideo } from '../video/target';
+import { VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
+import { createOverlayPresenter } from '@/entrypoints/content/overlay/overlay-host';
+import { getPlaybackRateFeedback, performPlaybackRateAction } from '@/entrypoints/content/video/playback-rate';
+import { getSiteAdapter } from '@/entrypoints/content/video/site-adapters';
+import { findTargetVideo } from '@/entrypoints/content/video/target';
 import {
   getShortcut,
   isEditableTarget,
   isPlaybackRateAction,
   isVolumeAction,
   type VideoAction,
-} from '../keyboard/shortcut';
-import { getToggledPlaybackFeedback, performVideoAction } from '../video/actions';
-import { performVolumeAction } from '../video/volume';
+} from '@/entrypoints/content/keyboard/shortcut';
+import { getToggledPlaybackFeedback, performVideoAction } from '@/entrypoints/content/video/actions';
+import { performVolumeAction } from '@/entrypoints/content/video/volume';
 
 /** Stores the most recent seek action for short-window feedback accumulation. */
 interface SeekAccumulation {
@@ -86,6 +86,57 @@ export function startKeyboardController(): void {
   }
 
   /**
+   * Performs the named video action on the selected local video and shows overlay feedback.
+   *
+   * @param video - The video selected within the frame receiving the keyboard event.
+   * @param action - The supported video action to perform.
+   * @param event - The native keyboard event to consume after confirming a local target.
+   * @returns Nothing.
+   */
+  function executeShortcutAction(
+    video: HTMLVideoElement,
+    action: VideoAction,
+    event: KeyboardEvent,
+  ): void {
+    const siteAdapter = getSiteAdapter(window.location.hostname);
+
+    if (action === 'toggle-playback' && siteAdapter?.nativeSpaceFeedback) {
+      overlayPresenter.show(getToggledPlaybackFeedback(video));
+      return;
+    }
+
+    if (isPlaybackRateAction(action)) {
+      const feedback = getPlaybackRateFeedback(video, action);
+      if (!feedback) return;
+
+      handledShortcutCodes.add(event.code);
+      consumeShortcutEvent(event);
+      overlayPresenter.show(feedback);
+      queuePlaybackRateAdjustment(video, action);
+      return;
+    }
+
+    if (isVolumeAction(action)) {
+      const feedback = performVolumeAction(video, action);
+      latestSeek = null;
+      handledShortcutCodes.add(event.code);
+      consumeShortcutEvent(event);
+      overlayPresenter.show(feedback);
+      return;
+    }
+
+    const feedback = performVideoAction(video, action);
+    const seconds = feedback.seconds
+      ? getAccumulatedSeconds(action, feedback.seconds)
+      : undefined;
+    if (!feedback.seconds) latestSeek = null;
+
+    handledShortcutCodes.add(event.code);
+    consumeShortcutEvent(event);
+    overlayPresenter.show(feedback, seconds);
+  }
+
+  /**
    * Controls a selected native video for supported shortcuts outside editable controls.
    *
    * @param event - The captured page keyboard event.
@@ -97,44 +148,10 @@ export function startKeyboardController(): void {
     const shortcut = getShortcut(event);
     if (!shortcut) return;
 
-    const siteAdapter = getSiteAdapter(window.location.hostname);
     const video = findTargetVideo();
     if (!video) return;
 
-    if (shortcut.action === 'toggle-playback' && siteAdapter?.nativeSpaceFeedback) {
-      overlayPresenter.show(getToggledPlaybackFeedback(video));
-      return;
-    }
-
-    if (isPlaybackRateAction(shortcut.action)) {
-      const feedback = getPlaybackRateFeedback(video, shortcut.action);
-      if (!feedback) return;
-
-      handledShortcutCodes.add(event.code);
-      consumeShortcutEvent(event);
-      overlayPresenter.show(feedback);
-      queuePlaybackRateAdjustment(video, shortcut.action);
-      return;
-    }
-
-    if (isVolumeAction(shortcut.action)) {
-      const feedback = performVolumeAction(video, shortcut.action);
-      latestSeek = null;
-      handledShortcutCodes.add(event.code);
-      consumeShortcutEvent(event);
-      overlayPresenter.show(feedback);
-      return;
-    }
-
-    const feedback = performVideoAction(video, shortcut.action);
-    const seconds = feedback.seconds
-      ? getAccumulatedSeconds(shortcut.action, feedback.seconds)
-      : undefined;
-    if (!feedback.seconds) latestSeek = null;
-
-    handledShortcutCodes.add(event.code);
-    consumeShortcutEvent(event);
-    overlayPresenter.show(feedback, seconds);
+    executeShortcutAction(video, shortcut.action, event);
   }
 
   /**

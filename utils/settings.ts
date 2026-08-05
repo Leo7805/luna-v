@@ -1,5 +1,5 @@
 /** Defines and persists LunaV's configurable video-control settings. */
-import { DEFAULT_VIDEO_CONTROL_CONFIG } from '../entrypoints/content/config';
+import { DEFAULT_VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
 
 export interface VideoControlSettings {
   feedback: { accumulationWindowMs: number; displayDurationMs: number; fadeDurationMs: number };

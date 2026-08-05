@@ -1,6 +1,6 @@
 /** Performs native playback and timeline operations for the selected video. */
-import { VIDEO_CONTROL_CONFIG } from '../config';
-import type { PlaybackRateAction, VideoAction, VolumeAction } from '../keyboard/shortcut';
+import { VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
+import type { PlaybackRateAction, VideoAction, VolumeAction } from '@/entrypoints/content/keyboard/shortcut';
 
 /** Identifies the visual symbol used for one overlay feedback item. */
 export type OverlayIcon =
