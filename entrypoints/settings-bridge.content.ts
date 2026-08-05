@@ -3,7 +3,7 @@ import { readSettings, subscribeSettings, type VideoControlSettings } from '@/ut
 
 /** Publishes one validated settings snapshot to the page world. */
 function publish(settings: VideoControlSettings): void {
-  window.postMessage({ type: 'luna-v:settings', settings }, window.location.origin);
+  window.postMessage({ type: 'luna-v:settings', settings }, '*');
 }
 
 export default defineContentScript({
