@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-06T10:19:57.634Z",
+  "updatedAt": "2026-08-06T10:24:44.959Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -209,9 +209,9 @@
     },
     "package.json": {
       "noteFile": "files/7ae45ad102ea-acb7da77.json",
-      "sourceHash": "sha256:653e18ae66a3e9e06bde9cd787aaf96ca57ede228cc530a02dff9034bf7bc9e9",
+      "sourceHash": "sha256:9cf11e28fa2688b19d4e5c55e23db6921300d7262fc99c08bc15dd6803b3303b",
       "programmingLanguage": "json",
-      "updatedAt": "2026-08-03T06:12:57.395Z"
+      "updatedAt": "2026-08-06T10:24:44.959Z"
     },
     "tsconfig.json": {
       "noteFile": "files/b55cdbef4907-01d20c97.json",
