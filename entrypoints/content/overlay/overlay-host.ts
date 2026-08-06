@@ -34,11 +34,11 @@ export function createOverlayPresenter(): OverlayPresenter {
   }
 
   /**
-   * Mounts the React overlay inside an isolated shadow root.
+   * Mounts the React overlay inside an isolated shadow root on first use.
    *
    * @returns Nothing.
    */
-  function mountOverlay(): void {
+  function ensureMounted(): void {
     if (root || !document.documentElement) return;
 
     host = document.createElement('div');
@@ -56,11 +56,9 @@ export function createOverlayPresenter(): OverlayPresenter {
     document.addEventListener('fullscreenchange', moveOverlayHost);
   }
 
-  if (document.documentElement) mountOverlay();
-  else document.addEventListener('DOMContentLoaded', mountOverlay, { once: true });
-
   return {
     show(feedback: VideoFeedback, seconds?: number): void {
+      ensureMounted();
       if (!root) return;
 
       overlayKey += 1;
