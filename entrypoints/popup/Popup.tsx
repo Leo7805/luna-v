@@ -1,7 +1,12 @@
 /** Composes LunaV's keyboard shortcut reference popup. */
 import { useEffect, useState } from 'react';
 import { DEFAULT_VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
-import { readSettings, subscribeSettings, type VideoControlSettings } from '@/utils/settings';
+import {
+  readSettings,
+  subscribeSettings,
+  writeSettings,
+  type VideoControlSettings,
+} from '@/utils/settings';
 import { ShortcutItem } from './ShortcutItem';
 import { getPopupShortcuts } from './shortcuts';
 import coffeeImage from '@/assets/black-button.png';
@@ -19,11 +24,44 @@ export function Popup() {
   const [settings, setSettings] = useState<VideoControlSettings>(
     structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG),
   );
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isSavingEnabled, setIsSavingEnabled] = useState(false);
 
   useEffect(() => {
-    void readSettings().then(setSettings);
-    return subscribeSettings(setSettings);
+    let isActive = true;
+    const unsubscribe = subscribeSettings((nextSettings) => {
+      if (isActive) setSettings(nextSettings);
+    });
+
+    void readSettings().then((savedSettings) => {
+      if (!isActive) return;
+      setSettings(savedSettings);
+      setIsLoaded(true);
+    });
+
+    return () => {
+      isActive = false;
+      unsubscribe();
+    };
   }, []);
+
+  /** Toggles LunaV without overwriting settings changed by another extension page. */
+  async function toggleEnabled(): Promise<void> {
+    if (!isLoaded || isSavingEnabled) return;
+
+    setIsSavingEnabled(true);
+    try {
+      const latestSettings = await readSettings();
+      const nextSettings = {
+        ...latestSettings,
+        enabled: !latestSettings.enabled,
+      };
+      await writeSettings(nextSettings);
+      setSettings(nextSettings);
+    } finally {
+      setIsSavingEnabled(false);
+    }
+  }
 
   /** Opens LunaV's dedicated extension settings page. */
   function openSettings(): void {
@@ -33,9 +71,34 @@ export function Popup() {
   return (
     <main className="w-full bg-slate-950 p-2 text-slate-100">
       <section className="rounded-2xl border border-slate-800 bg-slate-900 p-3 shadow-xl">
-        <div className="flex items-baseline gap-3">
-          <h1 className="text-lg font-semibold tracking-widest text-violet-300">LunaV</h1>
-          <p className="text-sm text-slate-400">Keyboard Video Controls</p>
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-baseline gap-3">
+            <h1 className="text-lg font-semibold tracking-widest text-violet-300">LunaV</h1>
+            <p className="text-sm text-slate-400">Keyboard Video Controls</p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={settings.enabled}
+            aria-label="Enable LunaV keyboard controls"
+            disabled={!isLoaded || isSavingEnabled}
+            className="inline-flex cursor-pointer items-center gap-1.5 rounded-md px-1.5 py-1 text-xs text-slate-300 transition hover:bg-slate-800 disabled:cursor-wait disabled:opacity-50"
+            onClick={() => void toggleEnabled()}
+          >
+            <span>{settings.enabled ? 'Enabled' : 'Disabled'}</span>
+            <span
+              aria-hidden="true"
+              className={`relative h-5 w-9 rounded-full transition ${
+                settings.enabled ? 'bg-violet-500' : 'bg-slate-700'
+              }`}
+            >
+              <span
+                className={`absolute left-0.5 top-0.5 size-4 rounded-full bg-white shadow transition-transform ${
+                  settings.enabled ? 'translate-x-4' : 'translate-x-0'
+                }`}
+              />
+            </span>
+          </button>
         </div>
 
         <dl className="mt-3 space-y-1.5">

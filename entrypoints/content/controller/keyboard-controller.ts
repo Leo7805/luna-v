@@ -1,5 +1,9 @@
 /** Coordinates page keyboard events with LunaV's video controls and feedback. */
-import { VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
+import {
+  VIDEO_CONTROL_CONFIG,
+  isVideoControlEnabled,
+  subscribeVideoControlConfig,
+} from '@/entrypoints/content/config';
 import { createOverlayPresenter } from '@/entrypoints/content/overlay/overlay-host';
 import { getPlaybackRateFeedback, performPlaybackRateAction } from '@/entrypoints/content/video/playback-rate';
 import { getSiteAdapter } from '@/entrypoints/content/video/site-adapters';
@@ -82,7 +86,7 @@ export function startKeyboardController(): void {
     >,
   ): void {
     playbackRateAdjustmentQueue = playbackRateAdjustmentQueue
-      .then(() => performPlaybackRateAction(video, action))
+      .then(() => isVideoControlEnabled() ? performPlaybackRateAction(video, action) : null)
       .then(() => undefined)
       .catch(() => undefined);
   }
@@ -140,7 +144,7 @@ export function startKeyboardController(): void {
       consumeShortcutEvent(event);
 
       void siteAdapter.seek(direction, actionSeconds).then((movedSeconds) => {
-        if (movedSeconds === null) return;
+        if (!isVideoControlEnabled() || movedSeconds === null) return;
         if (actionSeconds === 0 || movedSeconds < actionSeconds - 0.01) {
           latestSeek = null;
           overlayPresenter.show({
@@ -180,7 +184,7 @@ export function startKeyboardController(): void {
    * @returns Nothing.
    */
   function handleShortcutKeyDown(event: KeyboardEvent): void {
-    if (isEditableTarget(event.target)) return;
+    if (!isVideoControlEnabled() || isEditableTarget(event.target)) return;
 
     const shortcut = getShortcut(event);
     if (!shortcut) return;
@@ -198,11 +202,22 @@ export function startKeyboardController(): void {
    * @returns Nothing.
    */
   function blockHandledShortcutEvent(event: KeyboardEvent): void {
+    if (!isVideoControlEnabled()) {
+      handledShortcutCodes.clear();
+      return;
+    }
     if (!handledShortcutCodes.has(event.code)) return;
 
     consumeShortcutEvent(event);
     if (event.type === 'keyup') handledShortcutCodes.delete(event.code);
   }
+
+  subscribeVideoControlConfig((settings) => {
+    if (settings.enabled) return;
+    latestSeek = null;
+    handledShortcutCodes.clear();
+    overlayPresenter.hide();
+  });
 
   window.addEventListener('keydown', handleShortcutKeyDown, { capture: true });
   window.addEventListener('keypress', blockHandledShortcutEvent, { capture: true });

@@ -240,8 +240,14 @@ export function SettingsApp() {
   /** Saves validated settings to extension storage. */
   async function save(): Promise<void> {
     if (hasPlaybackRateError || volumeError || hasSeekError || !draftSettings) return;
-    await writeSettings(draftSettings);
-    setSettings(draftSettings);
+
+    const latestSettings = await readSettings();
+    const nextSettings = {
+      ...draftSettings,
+      enabled: latestSettings.enabled,
+    };
+    await writeSettings(nextSettings);
+    setSettings(nextSettings);
     setStatus('Saved');
   }
 

@@ -2,6 +2,7 @@
 import { DEFAULT_VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
 
 export interface VideoControlSettings {
+  enabled: boolean;
   feedback: { accumulationWindowMs: number; displayDurationMs: number; fadeDurationMs: number };
   seek: { fineSeconds: number; nearSeconds: number; farSeconds: number };
   playbackRate: { default: number; step: number; min: number; max: number };
@@ -11,6 +12,14 @@ export interface VideoControlSettings {
 export const SETTINGS_KEY = 'lunaV:settings';
 
 type SeekDurationKey = keyof VideoControlSettings['seek'];
+type NumericSettingsSection = 'feedback' | 'seek' | 'playbackRate' | 'volume';
+
+const NUMERIC_SETTINGS_SECTIONS: readonly NumericSettingsSection[] = [
+  'feedback',
+  'seek',
+  'playbackRate',
+  'volume',
+];
 
 const SEEK_DURATION_LIMITS: Readonly<Record<SeekDurationKey, { label: string; min: number; max: number }>> = {
   fineSeconds: { label: 'Fine seek', min: 0.1, max: 5 },
@@ -97,8 +106,12 @@ export function getSeekValidationError(seek: VideoControlSettings['seek']): stri
 export function normalizeSettings(value: unknown): VideoControlSettings {
   const next = structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG);
   if (!value || typeof value !== 'object') return next;
-  for (const section of Object.keys(next) as (keyof VideoControlSettings)[]) {
-    const source = (value as Record<string, unknown>)[section];
+
+  const sourceValue = value as Record<string, unknown>;
+  if (typeof sourceValue.enabled === 'boolean') next.enabled = sourceValue.enabled;
+
+  for (const section of NUMERIC_SETTINGS_SECTIONS) {
+    const source = sourceValue[section];
     if (!source || typeof source !== 'object') continue;
     for (const key of Object.keys(next[section]) as string[]) {
       const number = (source as Record<string, unknown>)[key];
@@ -107,13 +120,19 @@ export function normalizeSettings(value: unknown): VideoControlSettings {
       }
     }
   }
+
+  const getDefaultsPreservingEnabled = (): VideoControlSettings => ({
+    ...structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG),
+    enabled: next.enabled,
+  });
+
   next.playbackRate.step = roundToTwoDecimals(next.playbackRate.step);
   next.playbackRate.min = roundToTwoDecimals(next.playbackRate.min);
   next.playbackRate.max = roundToTwoDecimals(next.playbackRate.max);
   next.volume.step = roundToTwoDecimals(next.volume.step);
-  if (getPlaybackRateValidationError(next.playbackRate)) return structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG);
-  if (next.volume.min < 0 || next.volume.max > 1 || getVolumeStepValidationError(next.volume.step) || next.volume.min > next.volume.defaultUnmuted || next.volume.defaultUnmuted > next.volume.max) return structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG);
-  if (getSeekValidationError(next.seek) || Object.values(next.feedback).some((n) => n <= 0)) return structuredClone(DEFAULT_VIDEO_CONTROL_CONFIG);
+  if (getPlaybackRateValidationError(next.playbackRate)) return getDefaultsPreservingEnabled();
+  if (next.volume.min < 0 || next.volume.max > 1 || getVolumeStepValidationError(next.volume.step) || next.volume.min > next.volume.defaultUnmuted || next.volume.defaultUnmuted > next.volume.max) return getDefaultsPreservingEnabled();
+  if (getSeekValidationError(next.seek) || Object.values(next.feedback).some((n) => n <= 0)) return getDefaultsPreservingEnabled();
   return next;
 }
 

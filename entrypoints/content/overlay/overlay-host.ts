@@ -9,6 +9,8 @@ import type { VideoFeedback } from '@/entrypoints/content/video/actions';
 export interface OverlayPresenter {
   /** Displays one new feedback animation. */
   show: (feedback: VideoFeedback, seconds?: number) => void;
+  /** Removes any currently visible feedback without mounting a new host. */
+  hide: () => void;
 }
 
 /**
@@ -63,6 +65,9 @@ export function createOverlayPresenter(): OverlayPresenter {
 
       overlayKey += 1;
       root.render(createElement(Overlay, { ...feedback, key: overlayKey, seconds }));
+    },
+    hide(): void {
+      root?.render(null);
     },
   };
 }

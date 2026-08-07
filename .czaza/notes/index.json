@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-07T03:35:34.894Z",
+  "updatedAt": "2026-08-07T04:05:23.402Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -22,15 +22,15 @@
     },
     "entrypoints/content/config.ts": {
       "noteFile": "files/7f2617438117-c707be30.json",
-      "sourceHash": "sha256:9fc9bf78069abed660ce842dd19d591397b3df19ddd513944435dfcb9f658824",
+      "sourceHash": "sha256:2db9a6d09985b666094f22b8c5b56ed6b18abcf0998b4a5e76bd7a90bdc004ca",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-05T13:04:00.309Z"
+      "updatedAt": "2026-08-07T04:05:23.402Z"
     },
     "entrypoints/popup/Popup.tsx": {
       "noteFile": "files/80f4df32b81a-e1548bf8.json",
-      "sourceHash": "sha256:48cfe281ab1d161b1a85d4c497a359d2cfcfc88b5dd011508f9df2dbc08d59c2",
+      "sourceHash": "sha256:79a5840815aab0f528fc5edd5da573e6921360ea2394bd8bc50b7e03c34c38f4",
       "programmingLanguage": "typescriptreact",
-      "updatedAt": "2026-08-05T10:49:20.271Z"
+      "updatedAt": "2026-08-07T04:05:23.393Z"
     },
     "entrypoints/popup/ShortcutItem.tsx": {
       "noteFile": "files/f2e2768511e5-2811594f.json",
@@ -98,9 +98,9 @@
     },
     "entrypoints/content/controller/keyboard-controller.ts": {
       "noteFile": "files/2fb5dafdcdd6-e9e73da4.json",
-      "sourceHash": "sha256:5e9cddf797d8a1ec945ccf6d025dfec304a6876f53fca9ee4a99d16609c19946",
+      "sourceHash": "sha256:5c5a855851361f209d68c6240bc4965dd3ef4b73b5241d19e8c79948f96f2d4f",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-07T03:35:34.881Z"
+      "updatedAt": "2026-08-07T04:05:23.388Z"
     },
     "entrypoints/content/keyboard/shortcut.ts": {
       "noteFile": "files/ebd59b57d34e-6742129a.json",
@@ -158,9 +158,9 @@
     },
     "entrypoints/content/overlay/overlay-host.ts": {
       "noteFile": "files/415d68c1385a-d8d48f17.json",
-      "sourceHash": "sha256:014d3e29204992fcfb857a20eaeb1485bd33d89c582e425a2195c22d9f315bbb",
+      "sourceHash": "sha256:5401f473e66948fafdf8d2c7860ba851229fa2daef5b0d80baf861768e15df4b",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-06T10:19:57.634Z"
+      "updatedAt": "2026-08-07T04:05:23.398Z"
     },
     "entrypoints/popup/index.html": {
       "noteFile": "files/2c7eeba9066d-344f1bb5.json",
@@ -269,9 +269,9 @@
     },
     "utils/settings.ts": {
       "noteFile": "files/3def2f066359-23ae2712.json",
-      "sourceHash": "sha256:f1e63d58bea6149e96ab60fb435b7584b684be7e0ffba644698909ae082913e1",
+      "sourceHash": "sha256:2cfcdf8ae4fb5ed6ac70f8f5570e48b8d47f727278bb8674e02c0e5f9a7077d2",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-05T13:04:00.251Z"
+      "updatedAt": "2026-08-07T04:05:23.381Z"
     }
   }
 }
