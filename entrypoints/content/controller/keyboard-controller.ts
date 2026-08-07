@@ -8,7 +8,9 @@ import {
   getShortcut,
   isEditableTarget,
   isPlaybackRateAction,
+  isSeekAction,
   isVolumeAction,
+  resolveSeekAction,
   type VideoAction,
 } from '@/entrypoints/content/keyboard/shortcut';
 import { getToggledPlaybackFeedback, performVideoAction } from '@/entrypoints/content/video/actions';
@@ -122,6 +124,41 @@ export function startKeyboardController(): void {
       handledShortcutCodes.add(event.code);
       consumeShortcutEvent(event);
       overlayPresenter.show(feedback);
+      return;
+    }
+
+    if (isSeekAction(action) && siteAdapter?.seek) {
+      const { direction, seconds: actionSeconds } = resolveSeekAction(
+        action,
+        VIDEO_CONTROL_CONFIG.seek.fineSeconds,
+        VIDEO_CONTROL_CONFIG.seek.nearSeconds,
+        VIDEO_CONTROL_CONFIG.seek.farSeconds,
+      );
+
+      // Consume the event immediately so the page doesn't double-handle it
+      handledShortcutCodes.add(event.code);
+      consumeShortcutEvent(event);
+
+      void siteAdapter.seek(direction, actionSeconds).then((movedSeconds) => {
+        if (movedSeconds === null) return;
+        if (actionSeconds === 0 || movedSeconds < actionSeconds - 0.01) {
+          latestSeek = null;
+          overlayPresenter.show({
+            icon: direction === -1 ? 'rewind' : 'fast-forward',
+            label: direction === -1 ? 'Start' : 'End',
+          });
+          return;
+        }
+        const total = getAccumulatedSeconds(action, movedSeconds);
+        overlayPresenter.show(
+          {
+            icon: direction === -1 ? 'rewind' : 'fast-forward',
+            label: direction === -1 ? `Back ${total}s` : `Forward ${total}s`,
+            seconds: total,
+          },
+          total,
+        );
+      });
       return;
     }
 

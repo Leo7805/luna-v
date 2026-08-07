@@ -19,7 +19,7 @@ export interface PopupShortcutRow {
 export function getPopupShortcuts(settings: VideoControlSettings): readonly PopupShortcutRow[] {
   return [
     { groups: [{ keys: ['Space'], description: 'Pause / Play' }] },
-    { groups: [{ keys: ['[', ']', '\\'], description: `Speed: − / + ${formatCompactNumber(settings.playbackRate.step)}× / reset` }] },
+    { groups: [{ keys: ['[', ']', '\\'], description: `Speed: − / + ${formatCompactNumber(settings.playbackRate.step)}× / normal ↔ max` }] },
     { groups: [{ keys: [';', "'", 'Enter'], description: `Volume: − / + ${formatCompactNumber(settings.volume.step * 100)}% / mute` }] },
     {
       groups: [

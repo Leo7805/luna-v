@@ -145,6 +145,7 @@ async function adjustEcho360PlaybackRate(direction: PlaybackRateDirection): Prom
 export const echo360Adapter: SiteAdapter = {
   selectVideo: findEcho360Video,
   nativeSpaceFeedback: true,
+  maxPlaybackRate: MAX_PLAYBACK_RATE,
   getPlaybackRateTarget: getEcho360PlaybackRateTarget,
   adjustPlaybackRate: adjustEcho360PlaybackRate,
 };

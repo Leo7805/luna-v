@@ -4,6 +4,9 @@ import { getSiteAdapter } from './site-adapters';
 import type { PlaybackRateAction } from '@/entrypoints/content/keyboard/shortcut';
 import type { VideoFeedback } from './actions';
 
+const PLAYBACK_RATE_EPSILON = 0.001;
+const MAX_SITE_RATE_ADJUSTMENTS = 40;
+
 /**
  * Formats a playback rate without unnecessary trailing zeroes.
  *
@@ -34,7 +37,12 @@ function getNativePlaybackRateTarget(video: HTMLVideoElement, direction: -1 | 1)
  * @returns The target playback speed.
  */
 function getPlaybackRateTarget(video: HTMLVideoElement, action: PlaybackRateAction): number {
-  if (action === 'reset-playback-rate') return VIDEO_CONTROL_CONFIG.playbackRate.default;
+  if (action === 'reset-playback-rate') {
+    const { default: defaultRate, max } = VIDEO_CONTROL_CONFIG.playbackRate;
+    return Math.abs(video.playbackRate - defaultRate) <= PLAYBACK_RATE_EPSILON
+      ? max
+      : defaultRate;
+  }
 
   const direction = action === 'increase-playback-rate' ? 1 : -1;
   return getNativePlaybackRateTarget(video, direction);
@@ -66,10 +74,20 @@ export function getPlaybackRateFeedback(
   action: PlaybackRateAction,
 ): VideoFeedback | null {
   const siteAdapter = getSiteAdapter(window.location.hostname);
-  const playbackRate =
-    action !== 'reset-playback-rate' && siteAdapter?.getPlaybackRateTarget
+  let playbackRate: number | null;
+
+  if (action === 'reset-playback-rate') {
+    const { default: defaultRate, max } = VIDEO_CONTROL_CONFIG.playbackRate;
+    const siteMaximum = Math.min(max, siteAdapter?.maxPlaybackRate ?? max);
+    playbackRate =
+      Math.abs(video.playbackRate - defaultRate) <= PLAYBACK_RATE_EPSILON
+        ? siteMaximum
+        : defaultRate;
+  } else {
+    playbackRate = siteAdapter?.getPlaybackRateTarget
       ? siteAdapter.getPlaybackRateTarget(action === 'increase-playback-rate' ? 1 : -1)
       : getPlaybackRateTarget(video, action);
+  }
 
   return playbackRate === null
     ? null
@@ -89,18 +107,38 @@ export async function performPlaybackRateAction(
 ): Promise<VideoFeedback | null> {
   const siteAdapter = getSiteAdapter(window.location.hostname);
 
-  if (action !== 'reset-playback-rate' && siteAdapter?.adjustPlaybackRate) {
+  if (action === 'reset-playback-rate') {
+    const { default: defaultRate, max } = VIDEO_CONTROL_CONFIG.playbackRate;
+    const targetRate =
+      Math.abs(video.playbackRate - defaultRate) <= PLAYBACK_RATE_EPSILON
+        ? Math.min(max, siteAdapter?.maxPlaybackRate ?? max)
+        : defaultRate;
+
+    if (siteAdapter?.adjustPlaybackRate) {
+      let currentRate = video.playbackRate;
+      for (let attempts = 0; attempts < MAX_SITE_RATE_ADJUSTMENTS; attempts++) {
+        if (Math.abs(currentRate - targetRate) <= PLAYBACK_RATE_EPSILON) break;
+        const direction: -1 | 1 = currentRate < targetRate ? 1 : -1;
+        const adjustedRate = await siteAdapter.adjustPlaybackRate(direction);
+        if (adjustedRate === null || Math.abs(adjustedRate - currentRate) <= PLAYBACK_RATE_EPSILON) {
+          break;
+        }
+        currentRate = adjustedRate;
+      }
+      return { icon: 'speed', label: `Speed ${formatPlaybackRate(currentRate)}` };
+    }
+
+    video.playbackRate = targetRate;
+    return { icon: 'speed', label: `Speed ${formatPlaybackRate(video.playbackRate)}` };
+  }
+
+  if (siteAdapter?.adjustPlaybackRate) {
     const playbackRate = await siteAdapter.adjustPlaybackRate(
       action === 'increase-playback-rate' ? 1 : -1,
     );
     return playbackRate === null
       ? null
       : { icon: 'speed', label: `Speed ${formatPlaybackRate(playbackRate)}` };
-  }
-
-  if (action === 'reset-playback-rate') {
-    video.playbackRate = VIDEO_CONTROL_CONFIG.playbackRate.default;
-    return { icon: 'speed', label: `Speed ${formatPlaybackRate(video.playbackRate)}` };
   }
 
   return adjustNativePlaybackRate(video, action === 'increase-playback-rate' ? 1 : -1);

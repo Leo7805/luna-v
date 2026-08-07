@@ -82,6 +82,10 @@ function PlaybackIcon({ name }: { name: OverlayIcon }) {
   );
 }
 
+function formatSeconds(seconds: number): string {
+  return Number(seconds.toFixed(2)).toString();
+}
+
 /**
  * Renders a feedback item that enters distinctly, remains visible, and then fades away.
  *
@@ -127,7 +131,7 @@ export function Overlay({ icon, label, seconds }: OverlayProps) {
         <svg aria-hidden="true" viewBox="0 0 24 24" className="size-[1.2em] shrink-0">
           <PlaybackIcon name={icon} />
         </svg>
-        <span>{seconds ? `${seconds}s` : label}</span>
+        <span>{seconds ? `${formatSeconds(seconds)}s` : label}</span>
       </div>
     </div>
   );

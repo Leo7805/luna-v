@@ -1,9 +1,11 @@
 /** Resolves dedicated native video selectors for supported video-hosting sites. */
 import { echo360Adapter } from './echo360';
+import { netflixAdapter } from './netflix';
 import type { SiteAdapter } from './types';
 
 const SITE_ADAPTERS: Readonly<Record<string, SiteAdapter>> = {
   'echo360.net.au': echo360Adapter,
+  'netflix.com': netflixAdapter,
 };
 
 /**

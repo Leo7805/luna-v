@@ -91,6 +91,79 @@ export function isVolumeAction(action: VideoAction): action is VolumeAction {
   );
 }
 
+/** Represents one directional seek operation. */
+export type SeekAction = Extract<
+  VideoAction,
+  | 'seek-backward-fine'
+  | 'seek-forward-fine'
+  | 'seek-backward'
+  | 'seek-forward'
+  | 'seek-backward-far'
+  | 'seek-forward-far'
+>;
+
+/** Describes the direction and distance of one seek action. */
+export interface SeekParams {
+  /** The seek direction (-1 for backward, 1 for forward). */
+  direction: -1 | 1;
+  /** The absolute seek distance in seconds (0 for start/end). */
+  seconds: number;
+}
+
+/**
+ * Maps a seek action to its direction and distance.
+ *
+ * @param action - The seek action to resolve.
+ * @param fineSeconds - Configured fine-seek distance (default 1).
+ * @param nearSeconds - Configured near-seek distance (default 5).
+ * @param farSeconds - Configured far-seek distance (default 30).
+ * @returns The resolved seek parameters.
+ */
+export function resolveSeekAction(
+  action: VideoAction,
+  fineSeconds: number,
+  nearSeconds: number,
+  farSeconds: number,
+): SeekParams {
+  const isBackward = action.includes('backward') || action === 'seek-start';
+  const direction: -1 | 1 = isBackward ? -1 : 1;
+
+  switch (action) {
+    case 'seek-start':
+    case 'seek-end':
+      return { direction, seconds: 0 };
+    case 'seek-backward-fine':
+    case 'seek-forward-fine':
+      return { direction, seconds: fineSeconds };
+    case 'seek-backward-far':
+    case 'seek-forward-far':
+      return { direction, seconds: farSeconds };
+    default:
+      return { direction, seconds: nearSeconds };
+  }
+}
+
+const SEEK_ACTIONS = new Set<VideoAction>([
+  'seek-backward-fine',
+  'seek-forward-fine',
+  'seek-backward',
+  'seek-forward',
+  'seek-backward-far',
+  'seek-forward-far',
+  'seek-start',
+  'seek-end',
+]);
+
+/**
+ * Determines whether an action changes the video timeline position.
+ *
+ * @param action - The supported video action to inspect.
+ * @returns True when the action is a seek operation.
+ */
+export function isSeekAction(action: VideoAction): action is SeekAction | 'seek-start' | 'seek-end' {
+  return SEEK_ACTIONS.has(action);
+}
+
 /**
  * Determines whether an event target belongs to an editable page control.
  *

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-06T10:24:44.959Z",
+  "updatedAt": "2026-08-07T03:35:34.894Z",
   "workspaceRoot": "/Users/leo/Projects/chrome-plugins/luna-v",
   "files": {
     "wxt.config.ts": {
@@ -46,9 +46,9 @@
     },
     "entrypoints/popup/shortcuts.ts": {
       "noteFile": "files/769647b8fc49-75b0f577.json",
-      "sourceHash": "sha256:b294c0a33a2cd881fdf858a2bfb2890eff1c0bb8e40971ee9650b4bf19005059",
+      "sourceHash": "sha256:b39955199e44b2d80eceb7e35b677a5d97beb90a346886dc8fd028ef0fe28f6a",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-05T13:04:00.289Z"
+      "updatedAt": "2026-08-07T03:35:34.894Z"
     },
     "entrypoints/popup/main.tsx": {
       "noteFile": "files/d071893e9aac-d158e18f.json",
@@ -98,15 +98,15 @@
     },
     "entrypoints/content/controller/keyboard-controller.ts": {
       "noteFile": "files/2fb5dafdcdd6-e9e73da4.json",
-      "sourceHash": "sha256:9e2541b1cb0d60f3f1bd371633c34adfacc56e543748455a87de0ad2903d1453",
+      "sourceHash": "sha256:5e9cddf797d8a1ec945ccf6d025dfec304a6876f53fca9ee4a99d16609c19946",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-05T13:04:00.274Z"
+      "updatedAt": "2026-08-07T03:35:34.881Z"
     },
     "entrypoints/content/keyboard/shortcut.ts": {
       "noteFile": "files/ebd59b57d34e-6742129a.json",
-      "sourceHash": "sha256:42af89e04a2f114637f173eb4c586cd1dd5730e4e5df22bab5cbffce393e4102",
+      "sourceHash": "sha256:abd0cfa2cf033d46dd3854f19367364c84dba0c67714ff0d39331cfc67bb34fe",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-03T05:25:58.971Z"
+      "updatedAt": "2026-08-07T03:35:34.878Z"
     },
     "entrypoints/content/video/actions.ts": {
       "noteFile": "files/2c9be4e78973-71f87b6c.json",
@@ -122,27 +122,27 @@
     },
     "entrypoints/content/video/playback-rate.ts": {
       "noteFile": "files/9b6db2df2d9f-69cb423a.json",
-      "sourceHash": "sha256:01e6d9fc04d3dfb7fd5454e4759f762808c28acfcf63a2bcd424325ebd6fa518",
+      "sourceHash": "sha256:3d25b0e01b066bf8fef233f3c0bf83ba03fd6b4cd6a55739325b9ec674dcb240",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-08-05T13:04:00.262Z"
+      "updatedAt": "2026-08-07T03:35:34.874Z"
     },
     "entrypoints/content/video/site-adapters/echo360.ts": {
       "noteFile": "files/05cd23d5670d-aa442e6f.json",
-      "sourceHash": "sha256:4e455c7e9dc44ce6d56f71819c9dda70bc957fa4e1538777ecca4d657a28e947",
+      "sourceHash": "sha256:888f35e9156224ff1b9ddf63ae152b19a53342b996db5f8a11e4517365af2b79",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T11:29:30.800Z"
+      "updatedAt": "2026-08-07T03:35:34.868Z"
     },
     "entrypoints/content/video/site-adapters/index.ts": {
       "noteFile": "files/a723d6dc0de4-9f760837.json",
-      "sourceHash": "sha256:099428458f96db72bda1aeb8608802b96abfee14e41e1dd12ca36ffac17fb6f0",
+      "sourceHash": "sha256:2b693c2dd2655740e0003d1cf791d1bd08a5e0b83f2dc67d5746f89547f0744f",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T11:30:23.496Z"
+      "updatedAt": "2026-08-07T00:16:58.663Z"
     },
     "entrypoints/content/overlay/Overlay.tsx": {
       "noteFile": "files/d299e6e7f6e1-8d5455fc.json",
-      "sourceHash": "sha256:632cf23212e7ded6a626eb11d75d815f934442c913e972de077494d7da24b8c5",
+      "sourceHash": "sha256:51eaaa93a99c9d180f1d6e5fe68e5c9973c656adf7b70d398fb9c1fc1fa358fa",
       "programmingLanguage": "typescriptreact",
-      "updatedAt": "2026-08-05T13:04:00.279Z"
+      "updatedAt": "2026-08-07T03:35:34.886Z"
     },
     "entrypoints/content/overlay/overlay.css": {
       "noteFile": "files/bafcf9d96ffa-124b1b84.json",
@@ -152,9 +152,9 @@
     },
     "entrypoints/content/video/site-adapters/types.ts": {
       "noteFile": "files/8c96b354512f-a023e6d3.json",
-      "sourceHash": "sha256:5cf749d0126e667aa44e55026a744306e70ba67f5f40010e282c911dd5875782",
+      "sourceHash": "sha256:741cf6bbae3f42f7891c04c5478e973aa6c9a33dbf14cd5205592d347f77a9f1",
       "programmingLanguage": "typescript",
-      "updatedAt": "2026-07-31T11:31:38.324Z"
+      "updatedAt": "2026-08-07T03:35:34.889Z"
     },
     "entrypoints/content/overlay/overlay-host.ts": {
       "noteFile": "files/415d68c1385a-d8d48f17.json",
