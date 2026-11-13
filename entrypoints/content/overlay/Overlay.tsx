@@ -1,108 +1,202 @@
-/** Displays a short-lived, isolated status message above the current page. */
-import { useEffect, useState } from 'react';
+/** Renders transient feedback icons and labels above video controls. */
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { VIDEO_CONTROL_CONFIG } from '@/entrypoints/content/config';
 import type { OverlayIcon } from '@/entrypoints/content/video/actions';
 
-/** Represents one stage of the overlay's visibility animation. */
-type OverlayPhase = 'visible' | 'leaving';
+type OverlayPhase = 'visible' | 'fading';
 
-/**
- * Props for the temporary in-page status overlay.
- */
 interface OverlayProps {
-  /** The symbol that communicates the completed operation. */
+  /** The icon that illustrates the action. */
   icon: OverlayIcon;
-  /** The accessible operation description. */
+  /** The short, localisable action description. */
   label: string;
   /** The accumulated seek distance shown for timeline operations. */
   seconds?: number;
+  /** The target video element to center the overlay upon. */
+  video?: HTMLVideoElement | null;
+  /** Optional callback fired when the overlay completes its exit animation. */
+  onDismiss?: () => void;
 }
 
 /**
- * Renders a compact, modern playback operation icon.
+ * Calculates the center coordinates of an active video element relative to the viewport.
+ * Returns null if the target video is disconnected or has non-positive/non-finite dimensions.
  *
- * @param props - Icon configuration.
- * @returns The matching SVG icon.
+ * @param video - The target video element.
+ * @returns Center X and Y coordinates in viewport CSS pixels, or null if geometry is invalid.
+ */
+function getVideoCenter(video?: HTMLVideoElement | null): { x: number; y: number } | null {
+  if (!video) {
+    return {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    };
+  }
+
+  if (!video.isConnected) {
+    return null;
+  }
+
+  const rect = video.getBoundingClientRect();
+  if (
+    rect.width > 0 &&
+    rect.height > 0 &&
+    Number.isFinite(rect.left) &&
+    Number.isFinite(rect.top) &&
+    Number.isFinite(rect.width) &&
+    Number.isFinite(rect.height)
+  ) {
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * Returns SVG path data for the supported overlay feedback icons.
+ *
+ * @param props - Icon identifier.
+ * @returns The matching SVG path element.
  */
 function PlaybackIcon({ name }: { name: OverlayIcon }) {
   if (name === 'play') {
-    return <path d="m9 5 10 7-10 7V5Z" fill="currentColor" stroke="none" />;
+    return <path d="m7 5 10 7-10 7V5Z" fill="currentColor" stroke="none" />;
   }
 
   if (name === 'pause') {
-    return <path d="M8 5h3v14H8zm5 0h3v14h-3z" fill="currentColor" stroke="none" />;
-  }
-
-  if (name === 'speed') {
     return (
-      <path
-        d="M4 16a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4Zm7-5h2v5h-2zm2.4-3.6 1.4-1.4 1.2 1.2-1.4 1.4zM10 6H8V4h2v2Z"
-        fill="currentColor"
-        stroke="none"
-      />
+      <>
+        <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor" stroke="none" />
+        <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor" stroke="none" />
+      </>
     );
   }
 
   if (name === 'volume-muted') {
     return (
-      <>
-        <path d="M3 9v6h4l5 4V5L7 9H3Z" fill="currentColor" stroke="none" />
-        <path
-          d="m4 4 16 16M20 4 4 20"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeWidth="2.5"
-        />
-      </>
-    );
-  }
-
-  if (name === 'volume-down' || name === 'volume-up') {
-    return (
       <path
-        d={
-          name === 'volume-down'
-            ? 'M4 10v4h4l5 4V6l-5 4Zm11.5 2a3.5 3.5 0 0 0-2-3.15v1.72a2 2 0 0 1 0 2.86v1.72a3.5 3.5 0 0 0 2-3.15Z'
-            : 'M4 10v4h4l5 4V6l-5 4Zm11.5 0a3.5 3.5 0 0 0-2-3.15v1.72a2 2 0 0 1 0 2.86v1.72a3.5 3.5 0 0 0 2-3.15Zm0-7.2v1.7a6 6 0 0 1 0 11v1.7a7.5 7.5 0 0 0 0-14.4Z'
-        }
-        fill="currentColor"
-        stroke="none"
+        d="M11 5 6 9H2v6h4l5 4V5Zm6.5 4.5 4 4m0-4-4 4"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       />
     );
   }
 
-  const isRewind = name === 'rewind';
+  if (name === 'volume-down') {
+    return (
+      <path
+        d="M11 5 6 9H2v6h4l5 4V5Zm4.5 4a4.5 4.5 0 0 1 0 6"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    );
+  }
+
+  if (name === 'volume-up') {
+    return (
+      <path
+        d="M11 5 6 9H2v6h4l5 4V5Zm4.5 4a4.5 4.5 0 0 1 0 6m3-9a8.5 8.5 0 0 1 0 12"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    );
+  }
+
+  if (name === 'fast-forward') {
+    return (
+      <path
+        d="m13 19 9-7-9-7v14ZM2 19l9-7-9-7v14Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    );
+  }
+
+  if (name === 'rewind') {
+    return (
+      <path
+        d="m11 19-9-7 9-7v14Zm11 0-9-7 9-7v14Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    );
+  }
+
   return (
     <path
-      d={isRewind ? 'm11 5-7 7 7 7V5Zm9 0-7 7 7 7V5Z' : 'm13 5 7 7-7 7V5Zm-9 0 7 7-7 7V5Z'}
-      fill="currentColor"
-      stroke="none"
+      d="M12 2v4m0 12v4m-8-10H2m18 0h-2m-1.93-6.07-2.83 2.83m-6.48 6.48-2.83 2.83m0-12.14 2.83 2.83m6.48 6.48 2.83 2.83"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
     />
   );
 }
 
+/** Formats seek distance for human-friendly feedback. */
 function formatSeconds(seconds: number): string {
-  return Number(seconds.toFixed(2)).toString();
+  const rounded = Math.round(seconds * 10) / 10;
+  return `${rounded > 0 ? '+' : ''}${rounded}`;
 }
 
 /**
- * Renders a feedback item that enters distinctly, remains visible, and then fades away.
+ * Displays transient, centered playback feedback animations.
+ * Tracks the target video's bounding rectangle in real-time while active.
  *
  * @param props - Overlay configuration.
  * @returns The overlay element while its animation is active.
  */
-export function Overlay({ icon, label, seconds }: OverlayProps) {
+export function Overlay({ icon, label, seconds, video, onDismiss }: OverlayProps) {
   const [phase, setPhase] = useState<OverlayPhase>('visible');
   const [isMounted, setIsMounted] = useState(true);
+  const pillRef = useRef<HTMLDivElement>(null);
+  const dismissedRef = useRef(false);
+
+  // Case 1: No target video supplied -> viewport-centered and visible
+  // Case 2: Valid target video supplied -> video-centered and visible
+  // Case 3: Target video supplied but invalid (disconnected or zero-sized) -> hidden, not viewport-centered
+  const initialCenter = getVideoCenter(video);
+  const isInitiallyVisible = initialCenter !== null;
+  const initialPos = initialCenter ?? { x: 0, y: 0 };
+
+  const handleDismiss = useCallback(() => {
+    if (dismissedRef.current) return;
+    dismissedRef.current = true;
+    setIsMounted(false);
+    onDismiss?.();
+  }, [onDismiss]);
 
   useEffect(() => {
+    if (video && !video.isConnected) {
+      handleDismiss();
+      return;
+    }
+
     const fadeTimer = window.setTimeout(
-      () => setPhase('leaving'),
+      () => setPhase('fading'),
       VIDEO_CONTROL_CONFIG.feedback.displayDurationMs,
     );
     const removeTimer = window.setTimeout(
-      () => setIsMounted(false),
+      handleDismiss,
       VIDEO_CONTROL_CONFIG.feedback.displayDurationMs + VIDEO_CONTROL_CONFIG.feedback.fadeDurationMs,
     );
 
@@ -110,28 +204,110 @@ export function Overlay({ icon, label, seconds }: OverlayProps) {
       window.clearTimeout(fadeTimer);
       window.clearTimeout(removeTimer);
     };
-  }, []);
+  }, [video, handleDismiss]);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    let rafId: number | null = null;
+    let lastX = initialCenter?.x ?? -1;
+    let lastY = initialCenter?.y ?? -1;
+
+    function updatePosition(): boolean {
+      const pill = pillRef.current;
+      if (!pill) return false;
+
+      if (video) {
+        if (!video.isConnected) {
+          handleDismiss();
+          return false;
+        }
+
+        const center = getVideoCenter(video);
+        if (!center) {
+          // Target video temporarily has zero dimensions: hide without moving to viewport center
+          pill.style.visibility = 'hidden';
+          return true; // Keep RAF tracking active during feedback lifetime
+        }
+
+        pill.style.visibility = 'visible';
+        if (Math.abs(center.x - lastX) > 0.1 || Math.abs(center.y - lastY) > 0.1) {
+          lastX = center.x;
+          lastY = center.y;
+          pill.style.left = `${center.x}px`;
+          pill.style.top = `${center.y}px`;
+        }
+        return true;
+      }
+
+      // No target video supplied: viewport center
+      const center = getVideoCenter();
+      if (center) {
+        pill.style.visibility = 'visible';
+        if (Math.abs(center.x - lastX) > 0.1 || Math.abs(center.y - lastY) > 0.1) {
+          lastX = center.x;
+          lastY = center.y;
+          pill.style.left = `${center.x}px`;
+          pill.style.top = `${center.y}px`;
+        }
+      }
+
+      return true;
+    }
+
+    // Apply immediate positioning synchronously before first paint
+    if (!updatePosition()) {
+      return;
+    }
+
+    function loop() {
+      if (updatePosition()) {
+        rafId = requestAnimationFrame(loop);
+      } else {
+        rafId = null;
+      }
+    }
+
+    rafId = requestAnimationFrame(loop);
+
+    return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
+  }, [video, isMounted, handleDismiss, initialCenter]);
 
   if (!isMounted) return null;
 
   const phaseClass =
     phase === 'visible'
-      ? 'translate-y-0 scale-100 opacity-100 duration-150'
-      : 'translate-y-[.2em] scale-[.98] opacity-0 duration-400';
+      ? 'translate-x-0 translate-y-0 scale-100 opacity-100 duration-150'
+      : 'translate-x-0 translate-y-[.2em] scale-[.98] opacity-0 duration-400';
 
   return (
     <div
-      className="pointer-events-none fixed top-[45%] left-1/2 z-2147483647 flex w-[min(20em,calc(100vw-2em))] -translate-x-1/2 -translate-y-1/2 justify-center"
-      aria-label={label}
+      className="pointer-events-none fixed inset-0 z-[2147483647] overflow-visible"
       aria-live="polite"
     >
       <div
-        className={`flex items-center gap-[.4em] rounded-[.6em] border border-cyan-300/30 bg-slate-950/85 px-[1em] py-[.6em] text-center text-[1.25em] font-semibold leading-tight text-cyan-200 shadow-lg shadow-cyan-950/40 transition ease-out ${phaseClass}`}
+        ref={pillRef}
+        style={{
+          position: 'fixed',
+          left: `${initialPos.x}px`,
+          top: `${initialPos.y}px`,
+          visibility: isInitiallyVisible ? 'visible' : 'hidden',
+          transform: 'translate(-50%, -50%)',
+        }}
+        className={`grid grid-cols-[1.2em_auto_1.2em] items-center gap-[.4em] rounded-[.6em] border border-cyan-300/30 bg-slate-950/85 px-[1em] py-[.6em] text-[1.25em] font-semibold leading-tight text-cyan-200 shadow-lg shadow-cyan-950/40 transition ease-out ${phaseClass}`}
       >
-        <svg aria-hidden="true" viewBox="0 0 24 24" className="size-[1.2em] shrink-0">
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="size-[1.2em] shrink-0 justify-self-center">
           <PlaybackIcon name={icon} />
         </svg>
-        <span>{seconds ? `${formatSeconds(seconds)}s` : label}</span>
+        <span className="text-center tabular-nums whitespace-nowrap">
+          {seconds ? `${formatSeconds(seconds)}s` : label}
+        </span>
+        <span aria-hidden="true" className="size-[1.2em] shrink-0" />
       </div>
     </div>
   );

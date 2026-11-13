@@ -107,7 +107,7 @@ export function startKeyboardController(): void {
     const siteAdapter = getSiteAdapter(window.location.hostname);
 
     if (action === 'toggle-playback' && siteAdapter?.nativeSpaceFeedback) {
-      overlayPresenter.show(getToggledPlaybackFeedback(video));
+      overlayPresenter.show(getToggledPlaybackFeedback(video), undefined, video);
       return;
     }
 
@@ -117,7 +117,7 @@ export function startKeyboardController(): void {
 
       handledShortcutCodes.add(event.code);
       consumeShortcutEvent(event);
-      overlayPresenter.show(feedback);
+      overlayPresenter.show(feedback, undefined, video);
       queuePlaybackRateAdjustment(video, action);
       return;
     }
@@ -127,7 +127,7 @@ export function startKeyboardController(): void {
       latestSeek = null;
       handledShortcutCodes.add(event.code);
       consumeShortcutEvent(event);
-      overlayPresenter.show(feedback);
+      overlayPresenter.show(feedback, undefined, video);
       return;
     }
 
@@ -147,10 +147,14 @@ export function startKeyboardController(): void {
         if (!isVideoControlEnabled() || movedSeconds === null) return;
         if (actionSeconds === 0 || movedSeconds < actionSeconds - 0.01) {
           latestSeek = null;
-          overlayPresenter.show({
-            icon: direction === -1 ? 'rewind' : 'fast-forward',
-            label: direction === -1 ? 'Start' : 'End',
-          });
+          overlayPresenter.show(
+            {
+              icon: direction === -1 ? 'rewind' : 'fast-forward',
+              label: direction === -1 ? 'Start' : 'End',
+            },
+            undefined,
+            video,
+          );
           return;
         }
         const total = getAccumulatedSeconds(action, movedSeconds);
@@ -161,6 +165,7 @@ export function startKeyboardController(): void {
             seconds: total,
           },
           total,
+          video,
         );
       });
       return;
@@ -174,7 +179,7 @@ export function startKeyboardController(): void {
 
     handledShortcutCodes.add(event.code);
     consumeShortcutEvent(event);
-    overlayPresenter.show(feedback, seconds);
+    overlayPresenter.show(feedback, seconds, video);
   }
 
   /**

@@ -4,5 +4,22 @@
 :host {
   --luna-overlay-base-size: 16px;
   font-size: var(--luna-overlay-base-size);
+  font-variant-numeric: tabular-nums;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
   pointer-events: none;
 }
+
+:host::backdrop {
+  background: transparent;
+  pointer-events: none;
+}
+
