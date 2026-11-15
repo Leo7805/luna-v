@@ -2,7 +2,7 @@
   "name": "Keyboard Video Controls - LunaV",
   "description": "Control video playback on Chrome webpages with simple keyboard shortcuts.",
   "private": true,
-  "version": "1.2.2",
+  "version": "1.2.3",
   "packageManager": "pnpm@10.33.0",
   "type": "module",
   "scripts": {
