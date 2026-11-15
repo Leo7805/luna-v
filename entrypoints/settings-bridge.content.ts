@@ -7,6 +7,8 @@ function publish(settings: VideoControlSettings): void {
 }
 
 export default defineContentScript({
-  matches: ['<all_urls>'], allFrames: true, runAt: 'document_start', world: 'ISOLATED',
+  matches: ['<all_urls>'],
+  excludeMatches: ['*://player.jinleo.dev/*'],
+  allFrames: true, runAt: 'document_start', world: 'ISOLATED',
   main() { void readSettings().then(publish); subscribeSettings(publish); },
 });

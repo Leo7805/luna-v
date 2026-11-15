@@ -5,6 +5,7 @@ import { normalizeSettings } from '@/utils/settings';
 
 export default defineContentScript({
   matches: ['<all_urls>'],
+  excludeMatches: ['*://player.jinleo.dev/*'],
   allFrames: true,
   runAt: 'document_start',
   world: 'MAIN',
